@@ -1,0 +1,87 @@
+/* # By knightfall01 on Github as a part of https://github.com/Knightfall01/Hyprland-config */
+
+
+* {
+  border: none;
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 16px;
+  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  min-height: 30px;
+}
+
+window#waybar {
+  background: #131318;
+}
+
+#custom-arch, #gamemode, #workspaces {
+  border-radius: 10px;
+  background-color: #191a24;
+  color: #c0caf5;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-right: 5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#workspaces button {
+  background: #191a24;
+  color: #c0caf5;
+}
+
+#workspaces button:hover {
+  background-color: #04AA6D; /* Green */
+  color: white;
+}
+
+#workspaces button.active {
+  color: #3ac3de;
+}
+
+#clock, #bluetooth, #battery, #cpu, #custom-mic, #pulseaudio, #pulseaudio-slider, #network, #tray, #memory, #custom-notification, #custom-playerctl, #custom-weather {
+  border-radius: 10px;
+  background-color: #191a24;
+  color: #c0caf5;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-right: 5px;
+  padding-top: 6px;
+  padding-bottom: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#custom-mic {
+  padding-bottom: 3px;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: black;
+  }
+}
+
+#battery.warning:not(.charging) {
+  background: #f38ba8;
+  color: white;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#tray {
+  padding-right: 8px;
+  padding-left: 10px;
+}
+
+#custom-mic, #pulseaudio {
+  font-size: 16.5px;
+  font-weight: bold;
+}
+
+

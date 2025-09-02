@@ -1,0 +1,172 @@
+{
+  "layer": "top",
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/playerctl"
+  ],
+  "modules-right": [
+    "custom/notification",
+    "cpu",
+    "memory",
+    "bluetooth",
+    "custom/mic",
+    "pulseaudio",
+    "battery",
+    "network",
+    "tray"
+  ],
+  "custom/arch": {
+    "format": "🐧",
+    "on-click": "rofi -show drun"
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": " off",
+    "format-connected": " {num_connections} {device_battery_percentage}%",
+    "format-connected-battery": " {num_connections} {device_alias} {icon} {device_battery_percentage}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "format-no-controller": "",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "blueman-manager"
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-disconnected": "📵",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": " {essid} ",
+    "tooltip-format-ethernet": " {ipaddr}/{cidr} ",
+    "tooltip-format-disconnected": "📵",
+    "on-click": "iwgtk || nm-connection-editor",
+    "max-length": 10
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": true,
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": []
+    },
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
+    }
+  },
+  "clock": {
+    "format": "{:%c}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "max-length": 35,
+    "interval": 1
+  },
+  "battery": {
+    "format": "<span color='#a8cd76'>{icon}</span> {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "format-charging": "<span color='#a8cd76'></span> {capacity}%",
+    "interval": 1
+  },
+  "pulseaudio": {
+    "on-click": "flatpak run com.saivert.pwvucontrol",
+    "format": "<span color='#f7768e'> </span> {volume}%",
+    "format-muted": "<span color='#f7768e'>🔇</span> {volume}"
+  },
+  "memory": {
+    "format": "<span foreground='#9ece6a'>🎟</span> {}%",
+    "on-click": "alacritty -e htop"
+  },
+  "tray": {
+    "icon-size": 20,
+    "show-passive-items": true,
+    "spacing": 6
+  },
+  "cpu": {
+    "format": "<span foreground='#ff005f'></span>  {usage}%"
+  },
+  "custom/mic": {
+    "format": "<span color='#f7768e'>🎙</span> {}",
+    "alt-format": "{}",
+    "return-type": "json",
+    "interval": 15,
+    "justify": "center",
+    "exec": "pactl -f json list 2>/dev/null | jq -rc '{ \"text\": .sources[1].volume.\"front-right\".value_percent, \"tooltip\": .sources[1].description }'",
+    "on-click": "pavucontrol"
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which dunst",
+    "exec": "dunst",
+    "escape": true
+  },
+  "custom/playerctl": {
+    "format": "{icon} {0}",
+    "return-type": "json",
+    "hide-empty-text": false,
+    "max-length": 25,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{playerName}}:{{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}'",
+    "interval": 15,
+    "format-icons": {
+      "Paused": "<span foreground='#bb9af7'>⏸</span>",
+      "Playing": "<span foreground='#bb9af7'>♫</span>"
+    }
+  }
+}
+

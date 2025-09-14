@@ -16,7 +16,6 @@
     "custom/mic",
     "pulseaudio",
     "battery",
-    "network",
     "tray"
   ],
   "custom/arch": {
@@ -46,18 +45,6 @@
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "on-click": "blueman-manager"
-  },
-  "network": {
-    "format": "{ifname}",
-    "format-wifi": "",
-    "format-ethernet": "",
-    "format-disconnected": "📵",
-    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-    "tooltip-format-wifi": " {essid} ",
-    "tooltip-format-ethernet": " {ipaddr}/{cidr} ",
-    "tooltip-format-disconnected": "📵",
-    "on-click": "iwgtk || nm-connection-editor",
-    "max-length": 10
   },
   "hyprland/workspaces": {
     "format": "{icon}",

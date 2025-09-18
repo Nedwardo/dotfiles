@@ -13,6 +13,7 @@ efibootmgr
 evolution
 firefox
 flatpak
+fzf
 git
 gnome-keyring
 gnome-themes-extra
@@ -36,6 +37,7 @@ neovim
 network-manager-applet
 networkmanager
 noto-fonts
+os-prober
 polkit-kde-agent
 powerline-fonts
 pulseaudio

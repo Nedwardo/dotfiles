@@ -1,4 +1,4 @@
-ave_dotfiles()(
+save_dotfiles()(
 	dotfiles_dir=$(readlink -f ~/.aliases/save_packages | sed -E s/dotfiles.+/dotfiles/g)
 	cd ${dotfiles_dir}
 	git pull

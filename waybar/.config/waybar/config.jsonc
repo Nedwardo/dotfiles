@@ -100,7 +100,7 @@
     "interval": 1
   },
   "pulseaudio": {
-    "on-click": "pagraphcontrol",
+    "on-click": "pwvucontrol",
     "format": "<span color='#f7768e'> </span> {volume}%",
     "format-muted": "<span color='#f7768e'>🔇</span> {volume}"
   },
@@ -122,8 +122,8 @@
     "return-type": "json",
     "interval": 15,
     "justify": "center",
-    "exec": "pactl -f json list 2>/dev/null | jq -rc '{ \"text\": .sources[1].volume.\"front-right\".value_percent, \"tooltip\": .sources[1].description }'",
-    "on-click": "pavucontrol"
+    "exec": "pactl -f json list 2>/dev/null | jq -rc '{ \"text\": .sources[1].volume.mono.value_percent, \"tooltip\": .sources[1].description }'",
+    "on-click": "pwvucontrol"
   },
   "custom/notification": {
     "tooltip": false,

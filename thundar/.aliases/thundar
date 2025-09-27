@@ -1,0 +1,8 @@
+open_thunar() {
+	location=$1
+	if [[ -z $location ]]; then
+		location="."
+	fi
+	thunar $1 > /dev/null 2>&1 & disown
+}
+alias e="open_thunar"

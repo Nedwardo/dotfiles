@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Whats App
+Exec=zsh -c "whatsapp"
+Type=Application
+Terminal=True
+Categories=Network;InstantMessaging;

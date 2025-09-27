@@ -1,0 +1,15 @@
+save_dotfiles()(
+	dotfiles_dir=$(readlink -f ~/.aliases/save_packages | sed -E s/dotfiles.+/dotfiles/g)
+	cd ${dotfiles_dir}
+	git add *
+	echo $#
+	if (( $# > 0 )); then
+		echo "Shouldn't be here"
+		commit_msg=$1
+		git commit -m ${commit_msg}
+	else
+		git commit
+	fi
+	git push
+
+)

@@ -1,1 +1,1 @@
-tmux new -d -s whatsapp flatpak run io.github.tobagin.karere 2&>1 > /dev/null || tmux run-shell -t whatsapp 'flatpak run io.github.tobagin.karere'
+flatpak run io.github.tobagin.karere 

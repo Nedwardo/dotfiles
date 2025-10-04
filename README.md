@@ -6,6 +6,10 @@ You can install one of my dotfiles with:
 ```sh
 stow --adopt --target=$HOME <foldername>
 ```
+or, alternativley if you've stow'd .aliases, and added .aliases to your aliases (does not work with firefox)
+```sh
+update-stow <foldername>
+```
 Where `<foldername>` is the name of dotfile you'd like to install (alacritty, firefox, mise, python, tmux, wezterm, zim)
 
 Do note for firefox, some more configuration will be required.

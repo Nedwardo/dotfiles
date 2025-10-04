@@ -1,0 +1,4 @@
+mardown() {
+	pandoc $1 > /tmp/$1
+	xdg-open /tmp/$1
+}

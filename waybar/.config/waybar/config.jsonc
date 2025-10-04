@@ -9,13 +9,13 @@
     "custom/playerctl"
   ],
   "modules-right": [
-    "custom/notification",
     "cpu",
     "memory",
     "bluetooth",
     "custom/mic",
     "pulseaudio",
     "battery",
+    "custom/notification",
     "tray"
   ],
   "custom/arch": {
@@ -122,7 +122,7 @@
     "return-type": "json",
     "interval": 15,
     "justify": "center",
-    "exec": "pactl -f json list 2>/dev/null | jq -rc '{ \"text\": .sources[1].volume.mono.value_percent, \"tooltip\": .sources[1].description }'",
+    "exec": "/home/nedwardo/.config/waybar/get_mic_volume",
     "on-click": "pwvucontrol"
   },
   "custom/notification": {
@@ -139,8 +139,10 @@
       "dnd-inhibited-none": ""
     },
     "return-type": "json",
-    "exec-if": "which dunst",
-    "exec": "dunst",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "sleep 0.1 && swaync-client -d -sw",
     "escape": true
   },
   "custom/playerctl": {

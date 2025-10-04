@@ -6,7 +6,11 @@ l="ls -lah --color=auto --group-directories-first" \
 ls="ls -h --color=auto --group-directories-first" \
 grep="grep --color=auto" \
 mv="mv -i" \
+mp="mkdir -p" \
 rm="rm -Iv" \
 df="df -h" \
 du="du -h -d 1" \
-k="killall" 
+k="killall" \
+open="xdg-open" \
+cat="bat" \
+man="batman"

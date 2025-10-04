@@ -1,0 +1,14 @@
+update_stow()(
+	set -e
+	if [ $# -eq 0 ]; then
+		echo "Need at least one argument"
+		exit -1
+	fi
+		
+	cd $HOME/dotfiles
+	
+	for arg in $@; do
+		stow --adopt --target=$HOME $arg && echo "Successfully updated stow for $arg" || { echo "Could not update stow for $arg"; exit -1; }
+	done
+)
+alias update-stow="update_stow"

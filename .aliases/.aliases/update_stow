@@ -10,5 +10,6 @@ update_stow()(
 	for arg in $@; do
 		stow --adopt --target=$HOME $arg && echo "Successfully updated stow for $arg" || { echo "Could not update stow for $arg"; exit -1; }
 	done
+	exec $SHELL
 )
 alias update-stow="update_stow"

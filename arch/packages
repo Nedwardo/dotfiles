@@ -28,7 +28,6 @@ gtk-engine-murrine
 hplip
 htop
 hyprland
-hyprpaper
 intel-media-driver
 iwd
 jq
@@ -54,6 +53,7 @@ pipewire-pulse
 polkit-kde-agent
 powerline-fonts
 python-pyqt5
+python-pywal
 qbittorrent
 qt5-wayland
 qt6-virtualkeyboard
@@ -65,6 +65,7 @@ slurp
 smartmontools
 steam
 stow
+swaybg
 swaync
 thefuck
 thunar

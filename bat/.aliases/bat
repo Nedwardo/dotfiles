@@ -1,0 +1,10 @@
+cat(){
+	if [ $# -eq 1 ]; then
+		bat $@
+	else
+		bat --style="numbers,changes,snip,grid,header-filename" $@
+	fi
+}
+
+
+alias man="batman"

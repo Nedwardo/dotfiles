@@ -1,0 +1,4 @@
+# run `bat --help` to get a list of all possible configuration options.
+
+--theme="ansi"
+--style="numbers,changes,snip,grid,header-filename"

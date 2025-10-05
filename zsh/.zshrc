@@ -8,12 +8,7 @@ ZSH_THEME="robbyrussell"
 ###################
 HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
-
-###########################
-### Auto Update Setting ###
-###########################
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-zstyle ':omz:update' frequency 13
+setopt globdots
 
 ###############
 ### Plugins ###
@@ -24,7 +19,17 @@ plugins=(
 	fzf-tab
 )
 
+#################
+### Oh My Zsh ###
+#################
 source $ZSH/oh-my-zsh.sh
+
+###########################
+### Auto Update Setting ###
+###########################
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' frequency 13
+zstyle ':completion:*' special-dirs special-dirs false # Excludes '.' and '..' from autocompletion
 
 if [ -d $HOME/.aliases ]; then
 	for alias_file in $HOME/.aliases/*; do
@@ -37,3 +42,5 @@ if [ -d $HOME/.rc.d ]; then
 		[ -r $rc_file ] && source $rc_file
 	done
 fi
+
+

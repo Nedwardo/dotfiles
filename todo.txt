@@ -4,12 +4,10 @@ FOSS music reccomender
 Set up odds/evens (should be easy) (for workspaces)
 FOSS spell check?
 terminal that works better with nvim keybinds
-when open new window, open to the right instead of left
 I want cat alternative that shows markdown pretty and renders images
 dbus/rofi kill menu (or kill command with fzf take from penguin yt)
 Better email client (needs run as daemon, preferable seperate UI (investigate IMAP daemon server connecting to swaync))
 Update all configs (alacritty, hypr, etc.)
-zsh tab completion follow "." (i.e. hidden files)
 Nicer man pages?
 direnv at work?
 cd to top of git dir
@@ -21,3 +19,13 @@ Quick command to see nvim cheatsheet (i.e. nvim-cheat-sheet)
 Sort out file manager and default image preview
 Sort out qimgv binds
 Whats app doesn't die when I kill it, need to change to bind
+fzf preview
+wmenu? wmenu for specific work flows?
+https://www.bash2zsh.com/
+drun/rofi open mpv/qimgv with file?
+setup default fonts with fc-cache/ ~/.config/fontconfig/fonts.conf
+seperate terminal histories
+Experiment more with terminal opacity
+Try using other wall paper managers
+Key board bind for tab complete until can't anymore
+Have all my git stuff work even if file is staged

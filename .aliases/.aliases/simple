@@ -11,6 +11,4 @@ rm="rm -Iv" \
 df="df -h" \
 du="du -h -d 1" \
 k="killall" \
-open="xdg-open" \
-cat="bat" \
-man="batman"
+open="xdg-open"

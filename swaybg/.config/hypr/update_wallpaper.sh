@@ -5,5 +5,10 @@ wallpaper_dir=$HOME/documents/wallpapers
 images=($wallpaper_dir/*.{png,jpg,jpeg,xl,webp})
 
 random=$$$(date +%s)
-chosen_wallpaper=${images[$random % ${#images[@]}]}
-swaybg -i $chosen_wallpaper -m fit & 
+wallpaper=${images[$random % ${#images[@]}]}
+
+if pgrep swaybg; then
+	pkill swaybg
+fi
+swaybg -i $wallpaper -m fit > /dev/null 2&>1 &
+echo $wallpaper

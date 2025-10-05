@@ -29,3 +29,4 @@ Experiment more with terminal opacity
 Try using other wall paper managers
 Key board bind for tab complete until can't anymore
 Have all my git stuff work even if file is staged
+Have update stow update all terminals

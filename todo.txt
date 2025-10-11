@@ -34,3 +34,4 @@ setup pywal
 drives are mounting as ro
 Choose cooler boot load :sunglasses:
 More wallpapers
+Add global default ignore flags unless -a is specified? Thinking .git, .pyenv or other annoying files, but don't ignore strictly gitignore

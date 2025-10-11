@@ -1,0 +1,132 @@
+#!/bin/bash
+shopt -s nullglob
+CONFIG_FILE="$HOME/.config/swaybg.json"
+
+# TODO add fzf / dmenu support
+# Also check file extension is correct
+function show_help() {
+    cat << EOF
+Usage: $(basename "$0") [OPTIONS]
+
+Wallpaper manager for Sway with random selection and manual choice.
+
+OPTIONS:
+    -h, --help          Show this help message
+    -c, --config	Show config file location
+
+EXAMPLES:
+    $(basename "$0")			# Random wallpaper
+    $(basename "$0") /path/to/image.jpg	# Choose image
+    $(basename "$0") -c			# $CONFIG_FILE
+EOF
+}
+
+function config(){
+	echo "$CONFIG_FILE"
+}
+
+function load_config(){
+	declare -gA CONFIG
+	while IFS="=" read -r key value; do
+		CONFIG[$key]="${value/#\$HOME/~}"
+	done < <(jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' "$CONFIG_FILE")
+}
+
+function get_active_wallpaper(){
+	readlink "${CONFIG[wallpaper_dir]}"/active_wallpaper
+}
+
+function select_random_wallpaper(){
+	if [ "$#" = 0 ]; then
+		wallpaper_dir="${CONFIG[wallpaper_dir]}"
+	else
+		wallpaper_dir="$1"
+	fi
+
+	images=("$wallpaper_dir"/*.{png,jpg,jpeg,xl,webp})
+
+
+	random=$$$(date +%s)
+	image=${images[$random % ${#images[@]}]}
+	echo ${images[$random % ${#images[@]}]}
+}
+
+function run_singleton_sway() {
+	if [ "$#" != 1 ]; then
+		>&2 echo "Please only select at least one, and only one wallpaper, not $@"
+		exit 1
+	fi
+	wallpaper=$1
+	wallpaper_dir="${CONFIG[wallpaper_dir]}"
+
+	if pgrep swaybg &> /dev/null; then
+		pkill swaybg &> /dev/null
+	fi
+	swaybg -i $wallpaper -m ${CONFIG[default_mode]} &> /dev/null &
+
+	rm $wallpaper_dir/active_wallpaper
+	ln -sf $wallpaper $wallpaper_dir/active_wallpaper
+}
+
+function parse_args(){
+	local result
+	local mode
+
+	if [ "$#" -eq 0 ]; then
+		mode="update_wallpaper"
+		result="random"
+
+	elif [ "$#" -gt 1 ]; then
+		>&2 echo "Error: does not support multiple options"
+		show_help
+		exit 1
+
+	elif [ -f "$1" ]; then
+		mode="update_wallpaper"
+		result="$1"
+
+	else
+		case "$1" in
+			-h|--help)
+				mode="__EXIT__"
+				result=$(show_help)
+				>&2 show_help
+				;;
+			-c|--config)
+				mode="__EXIT__"
+				result=$(config)
+				;;
+			*)
+				>&2 echo "Error: unknown option '$1'"
+				show_help
+				exit 1
+				;;
+		esac
+	
+	fi
+	echo "$result" "$mode"
+}
+
+function main(){
+	local mode
+	local wallpaper
+
+	read wallpaper mode < <(parse_args "$@") || exit $?
+	load_config
+
+	if [[ "$mode" == "__EXIT__" ]]; then
+		echo "$wallpaper"
+
+	elif [[ "$wallpaper" == "random" ]]; then
+		mode="random"
+		wallpaper=$(select_random_wallpaper)
+	fi
+
+	run_singleton_sway "$wallpaper"
+
+	if [[ "$mode" == "random" ]]; then
+		echo "$wallpaper"
+	fi
+}
+
+main "$@"

@@ -1,4 +1,6 @@
-mardown() {
-	pandoc $1 > /tmp/$1
-	xdg-open /tmp/$1
+md() {
+	filename=/tmp/$(basename ${1%.*}).html
+	echo $filename
+	pandoc $1 -o $filename --standalone --css=style.css > /dev/null
+	xdg-open $filename
 }

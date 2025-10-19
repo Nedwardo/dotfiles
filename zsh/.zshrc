@@ -31,13 +31,15 @@ zstyle ':completion:*' special-dirs special-dirs false # Excludes '.' and '..' f
 export MANPATH="$HOME/.local/share/man:$MANPATH"
 
 if [ -d $HOME/.aliases ]; then
-	for alias_file in $HOME/.aliases/*; do
-		[ -r $alias_file ] && source $alias_file
+	local alias_files=($HOME/.aliases/*(N))
+	for alias_file in "${(@o)alias_files[@]}"; do
+		[ -r $alias_file ] && source $alias_file 
 	done
 fi
 
 if [ -d $HOME/.rc.d ]; then
-	for rc_file in $HOME/.rc.d/*; do
+	local rc_files=($HOME/.rc.d/*)
+	for rc_file in "${(@o)rc_files[@]}"; do
 		[ -r $rc_file ] && source $rc_file
 	done
 fi

@@ -1,0 +1,34 @@
+alias reboot="_reboot"
+
+local help_extra='
+=== CUSTOM ADDITIONS ===
+  -i --into OPTION  OS to reboot into. Options systemd-boot entries (1st is default), '"'widnows'"', '"'linux'"
+
+local reversed_extra_help=$(echo "$help_extra" | tac)
+
+function _reboot(){
+	if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
+		local help=$(command reboot --help | sed -E 's/^\W+--help/  -h --help/')
+		echo "$help" | tac | awk -v extra="$reversed_extra_help\n" '/-.+/ && !found {print extra; found=1} {print}' | tac
+	elif [[ "$1" == "-i" ]] || [[ "$1" == "--into" ]]; then
+		local default=$(systemctl reboot --boot-loader-entry=help | head -1)
+		local entry="$2"
+		if [ -z "$2" ]; then 
+			entry=$default
+		fi
+		case "${entry:l}" in 
+			w|windows)
+				systemctl reboot --bootloader-entry=auto-windows
+				;;
+			l|linux)
+				systemctl reboot --bootloader-entry="$default"
+				;;
+			*)
+				systemctl reboot --bootloader-entry="$entry"
+				;;
+		esac
+	else
+		command reboot "$@"
+	fi
+	return $?
+}

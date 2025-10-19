@@ -4,16 +4,17 @@
 # https://github.com/ohmyzsh/ohmyzsh/wiki
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
-source $ZSH/oh-my-zsh.sh
 
-###############
-### Plugins ###
-###############
+###################
+### OMZ Plugins ###
+###################
 plugins=(
 	git
 	zsh-autosuggestions
 	fzf-tab
 )
+
+source $ZSH/oh-my-zsh.sh
 
 ###################
 ### ZSH options ###

@@ -1,6 +1,5 @@
 save_dotfiles()(
-	dotfiles_dir=$(readlink -f ~/.aliases/save_packages | sed -E s/dotfiles.+/dotfiles/g)
-	cd ${dotfiles_dir}
+	cd $DOTFILES_DIR
 	git pull
 	git add *
 	if (( $# > 0 )); then

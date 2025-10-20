@@ -13,4 +13,5 @@ df="df -h" \
 du="du -h -d 1" \
 k="killall" \
 open="xdg-open" \
-tree="tree -a -I '.git/'"
+tree="tree -a -I '.git/'" \
+ln="ln -s" \

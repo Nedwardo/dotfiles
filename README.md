@@ -4,7 +4,7 @@
 
 You can install one of my dotfiles with:
 ```sh
-stow --adopt --target=$HOME <foldername>
+stow --dotfiles --target=$HOME <foldername>
 ```
 or, alternativley if you've stow'd .aliases, and added .aliases to your aliases (does not work with firefox)
 ```sh

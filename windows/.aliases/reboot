@@ -18,13 +18,13 @@ function _reboot(){
 		fi
 		case "${entry:l}" in 
 			w|windows)
-				systemctl reboot --bootloader-entry=auto-windows
+				systemctl reboot --boot-loader-entry=auto-windows
 				;;
 			l|linux)
-				systemctl reboot --bootloader-entry="$default"
+				systemctl reboot --boot-loader-entry="$default"
 				;;
 			*)
-				systemctl reboot --bootloader-entry="$entry"
+				systemctl reboot --boot-loader-entry="$entry"
 				;;
 		esac
 	else

@@ -1,13 +1,12 @@
-save_dotfiles()(
-	cd $DOTFILES_DIR
-	git pull
-	git add *
+_save_dotfiles(){
+	git -C $DOTFILES_DIR pull
+	git -C $DOTFILES_DIR add *
 	if (( $# > 0 )); then
 		commit_msg=$1
-		git commit -m ${commit_msg}
+		git -C $DOTFILES_DIR commit -m ${commit_msg}
 	else
-		git commit
+		git -C $DOTFILES_DIR commit
 	fi
-	git push
-
-)
+	git -C $DOTFILES_DIR push
+}
+alias save_dotfiles="_save_dotfiles"

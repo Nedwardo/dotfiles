@@ -6,7 +6,7 @@ _update_stow(){
 	fi
 
 	for arg in $@; do
-		stow --dotfiles -d "$DOTFILES_DIR" --target="$HOME" -R "$arg" && echo "Successfully updated stow for $arg" || { >&2 echo "Could not update stow for $arg"; exit -1; }
+		stow --dotfiles -d "$DOTFILES_DIR" -t="$HOME" -R "$arg" && echo "Successfully updated stow for $arg" || { >&2 echo "Could not update stow for $arg"; exit -1; }
 	done
 	
 	exec $SHELL

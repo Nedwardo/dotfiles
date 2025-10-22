@@ -1,1 +1,2 @@
 Remove local keyword from non-function declarations
+Add shebangs to files (What shell does .zshrc run in?)

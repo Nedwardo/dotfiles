@@ -1,3 +1,2 @@
-dotfiles_dir=$(readlink -f ~/.aliases/save_packages | sed -E s/dotfiles.+/dotfiles/g)
-packages_f="${dotfiles_dir}/arch/packages"
+packages_f="${DOTFILES_DIR}/arch/packages"
 alias save_packages='pacman -Qqe | grep -Fvx "$(pacman -Qqm)" > ${packages_f}'

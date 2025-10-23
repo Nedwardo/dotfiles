@@ -9,8 +9,6 @@ ZSH_THEME="robbyrussell"
 ### OMZ Plugins ###
 ###################
 plugins=(
-	git
-	zsh-autosuggestions
 	fzf-tab
 )
 
@@ -25,11 +23,14 @@ setopt globdots
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 zstyle ':omz:update' frequency 13
 zstyle ':completion:*' special-dirs special-dirs false # Excludes '.' and '..' from autocompletion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}{a-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 ###############
 ### My shit ###
 ###############
 export MANPATH="$HOME/.local/share/man:$MANPATH"
+source .zshopts
 
 if [ -d $HOME/.aliases ]; then
 	alias_files=($HOME/.aliases/*(N))
@@ -45,4 +46,7 @@ if [ -d $HOME/.rc.d ]; then
 	done
 fi
 
-
+###########################
+### Syntax Highlighting ###
+###########################
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

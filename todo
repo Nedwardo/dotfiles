@@ -1,3 +1,5 @@
 Remove local keyword from non-function declarations
 Add shebangs to files (What shell does .zshrc run in?)
 telescope
+get more familiar using dpkg as my package manager for installed packages, and pacman + yay + flatpak as installers + updaters. Try using dpkg for the installed packages instead of packman (will have to update both import and export).
+Define list of package installers/updates per system in terms of preference i.e. on arch pacman > flatpak > yay

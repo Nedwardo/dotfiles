@@ -30,7 +30,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 ### My shit ###
 ###############
 export MANPATH="$HOME/.local/share/man:$MANPATH"
-source .zshopts
+source "$HOME/.zshopts"
 
 if [ -d $HOME/.aliases ]; then
 	alias_files=($HOME/.aliases/*(N))
@@ -50,3 +50,4 @@ fi
 ### Syntax Highlighting ###
 ###########################
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

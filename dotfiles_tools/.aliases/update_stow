@@ -1,20 +1,16 @@
-#!/bin/bash
 _update_stow(){
-	set -e
 	if [ $# -eq 0 ]; then
 		>&2 echo "Need at least one argument"
-		exit -1
+		return -1
 	fi
 	if [[ $1 == "all" ]]; then
-		shopt -s nullglob
-		files=$(command ls -1d "$DOTFILES_DIR"/[!.]*/ | sed 's|/$||' | sed "s|^$DOTFILES_DIR/||")
-		shopt -u nullglob
+		files=("$DOTFILES_DIR"/[^\!.]*/(:t))
 	else
-		files=$@
-	fo
+		files=("$@")
+	fi
 
 	for arg in ${files[@]}; do
-		stow --dotfiles -d "$DOTFILES_DIR" -t="$HOME" -R "$arg" && echo "Successfully updated stow for $arg" || { >&2 echo "Could not update stow for $arg"; exit -1; }
+		stow --dotfiles -d "$DOTFILES_DIR" -t "$HOME" -R "$arg"
 	done
 	
 	exec $SHELL

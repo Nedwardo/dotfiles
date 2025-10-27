@@ -1,4 +1,11 @@
+#!/bin/sh
 mic_name=$(pactl get-default-source)
-
-pactl -f json list sources | jq -rc --arg mic_name $mic_name '.[] | select(.name == $mic_name) | {"text": .volume.mono.value_percent, "tooltip": .description}'
-
+pactl -f json list sources | jq -rc --arg mic_name $mic_name '
+	.[] | 
+	select(.name == $mic_name) | 
+	if .active_port == "analog-input-mic" then 
+		{"text": .volume.mono.value_percent, "tooltip": .description}
+	else
+		empty
+	end
+'

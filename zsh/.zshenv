@@ -10,3 +10,5 @@ preappend_path () {
 if [ -d "$HOME/.local/bin" ]; then
     preappend_path "$HOME/.local/bin"
 fi
+
+export ZDOTDIR="$HOME/.config/zsh"

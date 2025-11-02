@@ -1,4 +1,2 @@
-alias \
-\
-pinstall="sudo pacman -S" \
-pupdate="sudo pacman -Syu"
+alias pinstall="sudo pacman -S"
+alias pupdate="sudo pacman -Syu"

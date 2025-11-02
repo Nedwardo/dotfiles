@@ -25,7 +25,6 @@ gnome-keyring
 gnome-themes-extra
 grim
 grub
-gtk-engine-murrine
 hplip
 htop
 hyprland
@@ -95,6 +94,7 @@ texlive-xetex
 texmaker
 thefuck
 thunar
+tldr
 tmux
 ttf-liberation
 ttf-roboto
@@ -110,6 +110,7 @@ waybar
 wget
 wine
 winetricks
+wireguard-tools
 wireless_tools
 wireplumber
 wl-clipboard
@@ -126,3 +127,5 @@ xterm
 zoxide
 zram-generator
 zsh
+zsh-autosuggestions
+zsh-syntax-highlighting

@@ -1,17 +1,15 @@
-alias \
-\
-c="clear" \
-v="nvim" \
-l="ls -AFhl --color=auto --group-directories-first" \
-ls="ls -AFh --color=auto --group-directories-first" \
-ll="ls -aFhl --color=auto --group-directories-first" \
-grep="grep --color=auto" \
-mv="mv -i" \
-mp="mkdir -p" \
-rm="rm -Iv" \
-df="df -h" \
-du="du -h -d 1" \
-k="killall" \
-open="xdg-open" \
-tree="tree -a -I '.git/'" \
-ln="ln -s" \
+alias c="clear"
+alias v="nvim"
+alias l="ls -AFhl --color=auto --group-directories-first"
+alias ls="ls -AFh --color=auto --group-directories-first"
+alias ll="ls -aFhl --color=auto --group-directories-first"
+alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox,.venv,venv}'
+alias mv="mv -i"
+alias mp="mkdir -p"
+alias rm="rm -Iv"
+alias df="df -h"
+alias du="du -h -d 1"
+alias k="killall"
+alias open="xdg-open"
+alias tree="tree -a -I '.git/'"
+alias ln="ln -s"

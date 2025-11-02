@@ -1,1 +1,0 @@
-zstyle ':completion:*' verbose yes

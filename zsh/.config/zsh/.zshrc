@@ -21,6 +21,7 @@ my_plugins=(
 	zsh-syntax-highlighting
 	fzf-tab-git
 	zsh-autosuggestions
+	zsh-fzf-plugin
 )
 init_plugins(){
 	plugin_dir=/usr/share/zsh/plugins

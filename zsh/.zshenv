@@ -7,8 +7,6 @@ preappend_path () {
     esac
 }
 
-if [ -d "$HOME/.local/bin" ]; then
-    preappend_path "$HOME/.local/bin"
-fi
+preappend_path "$HOME/.local/bin"
 
 export ZDOTDIR="$HOME/.config/zsh"

@@ -1,0 +1,19 @@
+function bind_key_if_exists(){
+	if [[ -n "$1" ]]; then
+		bindkey -- "$1" "$2"
+	fi
+}
+source ~/.config/zsh/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+
+bind_key_if_exists	"${key[Home]}"		beginning-of-line
+bind_key_if_exists	"${key[End]}"		end-of-line
+bind_key_if_exists	"${key[Insert]}"	overwrite-mode
+bind_key_if_exists	"${key[Backspace]}"	backward-delete-char
+bind_key_if_exists	"${key[Delete]}"	delete-char
+bind_key_if_exists	"${key[Up]}"		up-line-or-history-substring-search
+bind_key_if_exists	"${key[Down]}"		down-line-or-history-substring-search 
+bind_key_if_exists	"${key[Left]}"		backward-char
+bind_key_if_exists	"${key[Right]}"		forward-char
+bind_key_if_exists	"${key[PageUp]}"	beginning-of-buffer-or-history
+bind_key_if_exists	"${key[PageDown]}"	end-of-buffer-or-history
+bind_key_if_exists	"${key[Shift-Tab]}"	reverse-menu-complete

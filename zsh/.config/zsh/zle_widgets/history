@@ -1,0 +1,23 @@
+function up-line-or-history-substring-search (){
+	if [[ -n $BUFFER && $CURSOR -eq $#BUFFER ]]; then
+		zle history-substring-search-up
+	else
+		zle up-line-or-history
+	fi
+}
+
+function down-line-or-history-substring-search (){
+	if [[ -n $BUFFER && $CURSOR -eq $#BUFFER ]]; then
+		zle history-substring-search-down
+	else
+		zle down-line-or-history
+	fi
+}
+
+function set_local_history_widget(){
+	zle set-local-history 1
+}
+
+add-zle-hook-widget -U line-init set_local_history_widget
+zle -N up-line-or-history-substring-search
+zle -N down-line-or-history-substring-search

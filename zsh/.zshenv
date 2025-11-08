@@ -9,4 +9,5 @@ preappend_path () {
 
 preappend_path "$HOME/.local/bin"
 
-export ZDOTDIR="$HOME/.config/zsh"
+export XDG_CONFIG_HOME="$HOME/.config"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"

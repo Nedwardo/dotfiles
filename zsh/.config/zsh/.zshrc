@@ -40,8 +40,8 @@ source_folder(){
 }
 init_my_stuff(){
 	export MANPATH="$HOME/.local/share/man:$MANPATH"
-	source_folder ".aliases"
-	source_folder ".rc.d"
+	source_folder "${XDG_CONFIG_HOME:-$HOME/.config}/aliases"
+	source_folder "${XDG_CONFIG_HOME:-$HOME/.config}/rc.d"
 }
 
 ################################

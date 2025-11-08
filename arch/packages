@@ -16,11 +16,13 @@ dolphin
 efibootmgr
 evince
 evolution
+fd
 firefox
 flatpak
 fzf
 gdb
 git
+glow
 gnome-keyring
 gnome-themes-extra
 grim
@@ -61,12 +63,15 @@ qbittorrent
 qt5-wayland
 qt6-virtualkeyboard
 qt6-wayland
+reflector
 rofi
+rsync
 sassc
 slurp
 smartmontools
 steam
 stow
+strace
 swaybg
 swaync
 syncplay
@@ -127,5 +132,3 @@ xterm
 zoxide
 zram-generator
 zsh
-zsh-autosuggestions
-zsh-syntax-highlighting

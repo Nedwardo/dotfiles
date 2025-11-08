@@ -7,3 +7,10 @@
 	defaultBranch = main
 [pull]
 	rebase = true
+[commit]
+	gpgSign = true
+[maintenance]
+	auto = true
+	strategy = incremental
+[alias]
+	chekcout = checkout

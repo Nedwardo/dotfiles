@@ -1,16 +1,16 @@
 function up-line-or-history-substring-search (){
-	if [[ -n $BUFFER && $CURSOR -eq $#BUFFER ]]; then
-		zle history-substring-search-up
-	else
+	if [[ -n $BUFFER && $BUFFER == *$'\n'* ]] && (( ${#${BUFFER[1,$CURSOR]//[^$'\n']}} > 0 )); then
 		zle up-line-or-history
+	else
+		zle history-substring-search-up
 	fi
 }
 
 function down-line-or-history-substring-search (){
-	if [[ -n $BUFFER && $CURSOR -eq $#BUFFER ]]; then
-		zle history-substring-search-down
-	else
+	if [[ -n $BUFFER && $BUFFER == *$'\n'* ]] && (( ${#${BUFFER[1,$CURSOR]//[^$'\n']}} > 0 )); then
 		zle down-line-or-history
+	else
+    		zle down-line-or-history
 	fi
 }
 

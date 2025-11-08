@@ -6,19 +6,27 @@ init_zinit(){
 	source "${ZINIT_HOME}/zinit.zsh"
 }
 
-###############
-### Plugins ###
-###############
+####################
+### ZLE plugins ####
+####################
+init_zle_plugins(){
+	source "$ZDOTDIR/zle_widgets/main"
+}
+
+#####################
+### zinit Plugins ###
+#####################
 init_plugins(){
+	zinit light-mode lucid depth="1" blockf for \
+		atpull'zinit creinstall -q .' zsh-users/zsh-completions
 	zicompinit; zicdreplay
-	zinit ice depth"1" lucid; zinit light Aloxaf/fzf-tab
-	zinit ice blockf atpull'zinit creinstall -q .'
-	zinit light zsh-users/zsh-completions
-	zinit ice depth"1" wait lucid 
-	zinit light-mode for \
-		zdharma-continuum/fast-syntax-highlighting \
-		atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
-		joshskidmore/zsh-fzf-history-search
+#		wait atload'load_widgets_for_plugin zsh-users/zsh-history-substring-search' \
+	zinit depth"1" lucid light-mode for \
+		Aloxaf/fzf-tab \
+		wait zsh-users/zsh-history-substring-search \
+		wait"0b" atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
+		wait"0b" joshskidmore/zsh-fzf-history-search \
+		wait"0c" zdharma-continuum/fast-syntax-highlighting
 }
 
 ###############
@@ -39,18 +47,19 @@ source_folder(){
 	fi
 }
 init_my_stuff(){
-	export MANPATH="$HOME/.local/share/man:$MANPATH"
-	source_folder "${XDG_CONFIG_HOME:-$HOME/.config}/aliases"
-	source_folder "${XDG_CONFIG_HOME:-$HOME/.config}/rc.d"
+	source_folder "$ZDOTDIR/zsh_hooks"
+	source_folder "$XDG_CONFIG_HOME/aliases"
+	source_folder "$XDG_CONFIG_HOME/rc.d"
 }
 
 ################################
 ### Actually initalise shell ###
 ################################
 
-[[ -z "$ZDOTDIR" ]] && export ZDOTDIR=$HOME
+source "$ZDOTDIR/zsh_vars" || print -u2 "⚠️ zsh vars init failed"
+init_zle_plugins || print -u2 "⚠️ zle plugins init failed"
 init_zinit || print -u2 "⚠️ zinit init failed"
-source "$ZDOTDIR/.zsh_autocomplete_config" || print -u2 "⚠️ autocomplete config failed"
-source "$ZDOTDIR/.zshopts" || print -u2 "⚠️ shell options init failed"
+source "$ZDOTDIR/zsh_autocomplete_config" || print -u2 "⚠️ autocomplete config failed"
+source "$ZDOTDIR/zshopts" || print -u2 "⚠️ shell options init failed"
 init_plugins || print -u2 "⚠️ plugin init failed"
 init_my_stuff || print -u2 "⚠️ My stuff init failed"

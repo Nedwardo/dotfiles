@@ -21,7 +21,6 @@ setopt globdots
 ###############
 export HISTSIZE=100000
 export SAVEHIST=100000
-export HISTFILE=$ZDOTDIR/.hist_zsh
 
 setopt share_history
 setopt HIST_IGNORE_ALL_DUPS

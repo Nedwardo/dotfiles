@@ -1,3 +1,0 @@
-ZSH_COMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
-autoload -U compinit
-compinit -u -d "$ZSH_COMPDUMP"

@@ -1,0 +1,6 @@
+alias gp="git pull"
+alias gc="git commit -m"
+alias ga="git add"
+alias gac="ga && gc"
+alias gcp="gc && gp"
+alias gacp="gac && gp"

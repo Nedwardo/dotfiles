@@ -3,7 +3,8 @@
 ###############
 unsetopt menu_complete
 unsetopt flowcontrol
-# setopt auto_menu TODO consider this
+setopt correct_all
+#setopt auto_menu TODO consider this
 
 ##########
 ### cd ###

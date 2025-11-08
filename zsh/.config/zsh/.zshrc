@@ -1,38 +1,24 @@
-#################
-### Oh My Zsh ###
-#################
-# https://github.com/ohmyzsh/ohmyzsh/wiki
-init_oh_my_zsh(){
-	export ZSH="$HOME/.oh-my-zsh"
-	ZSH_THEME="robbyrussell"
-
-	HYPHEN_INSENSITIVE="true"
-	ENABLE_CORRECTION="true"
-	zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-	zstyle ':omz:update' frequency 13
-
-	source $ZSH/oh-my-zsh.sh || return $?
+#############
+### Zinit ###
+#############
+init_zinit(){
+	ZINIT_HOME="/usr/share/zinit"
+	source "${ZINIT_HOME}/zinit.zsh"
 }
 
-##################
-### My Plugins ###
-##################
-my_plugins=(
-	zsh-syntax-highlighting
-	fzf-tab-git
-	zsh-autosuggestions
-	zsh-fzf-plugin
-)
+###############
+### Plugins ###
+###############
 init_plugins(){
-	plugin_dir=/usr/share/zsh/plugins
-	for plugin in "${my_plugins[@]}"; do
-		plugin_file=($plugin_dir/$plugin/*.plugin.zsh(N[1]))
-		if [ -f "${plugin_file}" ]; then
-			source "${plugin_file}" || print -u2 "Failed to source ${plugin}, failed during sourcing file: $plugin_file}"
-		else
-			print -u2 "Failed to find plugin ${plugin}, looking for ${plugin_file}, not found"
-		fi
-	done
+	zicompinit; zicdreplay
+	zinit ice depth"1" lucid; zinit light Aloxaf/fzf-tab
+	zinit ice blockf atpull'zinit creinstall -q .'
+	zinit light zsh-users/zsh-completions
+	zinit ice depth"1" wait lucid 
+	zinit light-mode for \
+		zdharma-continuum/fast-syntax-highlighting \
+		atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
+		joshskidmore/zsh-fzf-history-search
 }
 
 ###############
@@ -63,9 +49,8 @@ init_my_stuff(){
 ################################
 
 [[ -z "$ZDOTDIR" ]] && export ZDOTDIR=$HOME
-init_oh_my_zsh || print -u2 "⚠️ oh my zsh init failed"
-source "$ZDOTDIR/.zsh_autocomplete_init" || print -u2 "⚠️ autocomplete init failed"
-init_plugins || print -u2 "⚠️ plugin init failed"
+init_zinit || print -u2 "⚠️ zinit init failed"
 source "$ZDOTDIR/.zsh_autocomplete_config" || print -u2 "⚠️ autocomplete config failed"
 source "$ZDOTDIR/.zshopts" || print -u2 "⚠️ shell options init failed"
+init_plugins || print -u2 "⚠️ plugin init failed"
 init_my_stuff || print -u2 "⚠️ My stuff init failed"

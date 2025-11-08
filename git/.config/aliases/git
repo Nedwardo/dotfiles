@@ -1,6 +1,19 @@
-alias gp="git pull"
+##############
+### Simple ###
+##############
+alias gp="git push"
+alias gs="git status"
 alias gc="git commit -m"
 alias ga="git add"
 alias gac="ga && gc"
-alias gcp="gc && gp"
-alias gacp="gac && gp"
+
+#################
+### Functions ###
+#################
+
+function _gcp(){
+	gc "$@" && gp
+}
+alias gcp="_gcp"
+alias gacp="ga && gcp"
+

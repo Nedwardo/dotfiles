@@ -8,18 +8,10 @@ _update_stow(){
 	else
 		files=("$@")
 	fi
-
 	for arg in ${files[@]}; do
-		echo "$arg"
 		stow --dotfiles -d "$DOTFILES_DIR" -t "$HOME" -R "$arg"
 	done
-	
 	exec $SHELL
 }
-_update_stow_completion(){
-	local -a options
-	options=("all:Process all folders" "$DOTFILES_DIR"/[^\!.]*/(:t))
-	_describe 'folders' options	
-}
-compdef _update_stow_completion _update_stow
+
 alias update-stow="_update_stow"

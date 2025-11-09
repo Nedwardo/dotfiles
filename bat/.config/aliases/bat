@@ -6,8 +6,5 @@ _bat(){
 	fi
 }
 
-compdef _bat=cat
 alias cat="_bat"
-
-compdef batman=man
 alias man="batman"

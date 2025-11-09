@@ -1,4 +1,13 @@
-vim.opt.clipboard = "unnamed"
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+vim.o.number = true
+vim.o.relativenumber = true
+
+vim.schedule(function()
+	vim.o.clipboard ='unnamedplus'
+end)
+
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.g.inverse_scrolloff_size = 5
@@ -15,3 +24,5 @@ vim.api.nvim_create_autocmd("VimResized", {
 })
 
 set_dynamic_scrolloff()
+
+vim.o.undofile = true

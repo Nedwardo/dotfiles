@@ -20,7 +20,6 @@ init_plugins(){
 	zinit light-mode lucid depth="1" blockf for \
 		atpull'zinit creinstall -q .' zsh-users/zsh-completions
 	zicompinit; zicdreplay
-#		wait atload'load_widgets_for_plugin zsh-users/zsh-history-substring-search' \
 	zinit depth"1" lucid light-mode for \
 		Aloxaf/fzf-tab \
 		wait zsh-users/zsh-history-substring-search \
@@ -32,24 +31,10 @@ init_plugins(){
 ###############
 ### My shit ###
 ###############
-source_folder(){
-	local folder="${1%/}"
-	[[ "$folder" != /* ]] && folder="$HOME/$folder"
-	if [ -d $folder ]; then
-		files_to_source=($folder/*(N))
-		for file_to_source in "${(@o)files_to_source[@]}"; do
-			if [[ $file_to_source != *.disabled && -r $file_to_source ]]; then
-				{source $file_to_source || print -u2 "⚠️ Failed to init $file_to_source"}
-			fi
-		done
-	else
-		print -u2 "⚠️ Failed to source folder $folder, does not exist"
-	fi
-}
 init_my_stuff(){
 	source_folder "$ZDOTDIR/zsh_hooks"
-	source_folder "$XDG_CONFIG_HOME/aliases"
 	source_folder "$XDG_CONFIG_HOME/rc.d"
+	source_folder "$XDG_CONFIG_HOME/compdefs"
 }
 
 ################################

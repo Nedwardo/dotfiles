@@ -1,2 +1,0 @@
-packages_f="${DOTFILES_DIR}/arch/packages"
-alias save_packages='pacman -Qqe | grep -Fvx "$(pacman -Qqm)" > ${packages_f}'

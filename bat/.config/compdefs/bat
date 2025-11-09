@@ -1,0 +1,2 @@
+compdef _bat=cat
+compdef batman=man

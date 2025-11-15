@@ -22,6 +22,7 @@ source_folder(){
 	fi
 }
 
+preappend_path "$HOME/.local/bin"
 source $ZDOTDIR/zsh_vars
 source_folder "$XDG_CONFIG_HOME/aliases"
 

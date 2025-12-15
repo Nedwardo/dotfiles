@@ -1,0 +1,9 @@
+git -C $DOTFILES_DIR pull
+git -C $DOTFILES_DIR add *
+if (( $# > 0 )); then
+	commit_msg=$1
+	git -C $DOTFILES_DIR commit -m ${commit_msg}
+else
+	git -C $DOTFILES_DIR commit
+fi
+git -C $DOTFILES_DIR push

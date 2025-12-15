@@ -23,3 +23,11 @@ Fill in `<yourprofile>`. Read about firefox profiles [here](https://support.mozi
 
 * Press a + I (capital I, as in Install) to install the tmux plugin manager
 
+## Pacman
+Pacman packages are stored under arch/packages, import/export commands are below
+(Also as arch/.local/bin/download-packages and list-packages)
+## Export
+pacman -Qqe | grep -Fvx "$(pacman -Qqm)" > packages
+
+## Import
+xargs pacman -S --needed --noconfirm < packages

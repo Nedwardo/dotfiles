@@ -3,6 +3,9 @@
 #############
 init_zinit(){
 	ZINIT_HOME="/usr/share/zinit"
+	if [ ! -d "$ZINIT_HOME" ]; then
+		ZINIT_HOME="/home/user/.local/share/zinit/zinit.git"
+	fi
 	source "${ZINIT_HOME}/zinit.zsh"
 }
 

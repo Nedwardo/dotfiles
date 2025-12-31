@@ -1,15 +1,12 @@
 [user]
 	email = edwardbo123@gmail.com
 	name = Nedwardo
-	signingkey = 9B0EF6619A7FC4FE48A858A88300CF1ED1BC2017
 [core]
 	editor = nvim
 [init]
 	defaultBranch = main
 [pull]
 	rebase = true
-[commit]
-	gpgSign = true
 [maintenance]
 	auto = true
 	strategy = incremental

@@ -1,6 +1,10 @@
 Remove local keyword from non-function declarations
-Add shebangs to files (What shell does .zshrc run in?)
 telescope
 get more familiar using dpkg as my package manager for installed packages, and pacman + yay + flatpak as installers + updaters. Try using dpkg for the installed packages instead of packman (will have to update both import and export).
 Define list of package installers/updates per system in terms of preference i.e. on arch pacman > flatpak > yay
 are there any settings for pacman, apt, yay and flatpak to only download latest packages if they're a week old? (to avoid supply chain attacks?) (If the latest is under a week, then grab the previous version, if it's over a week, etc.) (Claude says no, can add it via pr?)
+
+Better startup behaviour
+Don't stow top level files
+Doesn't have zinit installed or zkbd setup or oh my posh or zoxide
+Add signing key back to git config (Keep in mind that user.signingkey might have to be platform dependant)

@@ -1,18 +1,18 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
 if [ $# -eq 0 ]; then
     >&2 echo "Need at least one argument"
-    return -1
+    exit -1
 fi
 
-if [[ $1 == "all" ]]; then
+if [ "$1" = "all" ]; then
     os=$(lsb_release -si)
-    files=$(find . -maxdepth 1 -type d \( -not \( -name '.*' -o -name '!*' -o -name "os_*" \) -o -iname "os_${os}" \) -exec basename {} \;)
+    files=$(find "$DOTFILES_DIR" -maxdepth 1 -type d \( -not \( -name '.*' -o -name '!*' -o -name "os_*" \) -o -iname "os_${os}" \) -exec basename {} \;)
 else
     files="$@"
 fi
 
 for file in $files; do
-    stow --dotfiles -d "$DOTFILES_DIR" -t "$HOME" -R "$file"
+    stow -d "$DOTFILES_DIR" -t "$HOME" -R "$file"
 done
 exec $SHELL

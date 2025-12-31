@@ -3,4 +3,4 @@ hypr/.config/hypr/monitors.conf
 hypr/.config/hypr/window_rules.conf
 
 # Temporary Scripts
-*.ipynb
+**/*.ipynb

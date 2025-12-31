@@ -41,7 +41,7 @@ init_my_stuff(){
 }
 
 ################################
-### Actually initalise shell ###
+### Actually initialise shell ###
 ################################
 
 source "$ZDOTDIR/zsh_vars" || print -u2 "⚠️ zsh vars init failed"

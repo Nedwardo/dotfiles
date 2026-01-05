@@ -1,5 +1,6 @@
 local zle_widgets_folder="${${(%):-%x}:A:h}"
 autoload -Uz add-zle-hook-widget
 
+source "$zle_widgets_folder/keycodes"
 source "$zle_widgets_folder/history"
 source "$zle_widgets_folder/keybinds"

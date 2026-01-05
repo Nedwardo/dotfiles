@@ -1,4 +1,3 @@
-
 source ~/.config/zsh/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
 
 for key_name base_seq in ${(kv)key}; do

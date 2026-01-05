@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+export DOTFILES_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+$DOTFILES_DIR/dotfiles_tools/.local/bin/update-stow all

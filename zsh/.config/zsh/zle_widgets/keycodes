@@ -1,0 +1,16 @@
+
+source ~/.config/zsh/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+
+for key_name base_seq in ${(kv)key}; do
+    if [[ "$base_seq" != "^[["* && "$base_seq" != "^[O"* ]]; then
+        continue
+    fi
+
+    for mod_name mod_code in ${(kv)escaped_modifier}; do
+        key_num="${base_seq:3: -1}"
+        if [[ "$key_num" == "" ]]; then
+            key_num="1"
+        fi
+        key[${mod_name}+${key_name}]="^[[${key_num};${mod_code}${base_seq: -1}"
+    done
+done

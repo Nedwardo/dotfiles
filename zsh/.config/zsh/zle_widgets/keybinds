@@ -3,17 +3,26 @@ function bind_key_if_exists(){
 		bindkey -- "$1" "$2"
 	fi
 }
-source ~/.config/zsh/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+# Arrow keys
+bind_key_if_exists	"${key[Up]}"				up-line-or-history-substring-search
+bind_key_if_exists	"${key[Down]}"				down-line-or-history-substring-search 
+bind_key_if_exists	"${key[Right]}"				forward-char
+bind_key_if_exists	"${key[Ctrl+Right]}"		forward-word
+bind_key_if_exists	"${key[Alt+Right]}"			forward-word
+bind_key_if_exists	"${key[Left]}"				backward-char
+bind_key_if_exists	"${key[Ctrl+Left]}"			backward-word
+bind_key_if_exists	"${key[Alt+Left]}"			backward-word
 
-bind_key_if_exists	"${key[Home]}"		beginning-of-line
-bind_key_if_exists	"${key[End]}"		end-of-line
-bind_key_if_exists	"${key[Insert]}"	overwrite-mode
-bind_key_if_exists	"${key[Backspace]}"	backward-delete-char
-bind_key_if_exists	"${key[Delete]}"	delete-char
-bind_key_if_exists	"${key[Up]}"		up-line-or-history-substring-search
-bind_key_if_exists	"${key[Down]}"		down-line-or-history-substring-search 
-bind_key_if_exists	"${key[Left]}"		backward-char
-bind_key_if_exists	"${key[Right]}"		forward-char
-bind_key_if_exists	"${key[PageUp]}"	beginning-of-buffer-or-history
-bind_key_if_exists	"${key[PageDown]}"	end-of-buffer-or-history
-bind_key_if_exists	"${key[Shift-Tab]}"	reverse-menu-complete
+# 9 Keys
+bind_key_if_exists	"${key[Home]}"				beginning-of-line
+bind_key_if_exists	"${key[End]}"				end-of-line
+bind_key_if_exists	"${key[Insert]}"			overwrite-mode
+bind_key_if_exists	"${key[Backspace]}"			backward-delete-char
+bind_key_if_exists	"${key[Ctrl+Backspace]}"	backward-delete-word
+bind_key_if_exists	"${key[Delete]}"			delete-char
+bind_key_if_exists	"${key[Ctrl+Delete]}"		delete-word
+bind_key_if_exists	"${key[PageUp]}"			beginning-of-buffer-or-history
+bind_key_if_exists	"${key[PageDown]}"			end-of-buffer-or-history
+
+# fzf navigation
+bind_key_if_exists	"${key[Shift-Tab]}"			reverse-menu-complete

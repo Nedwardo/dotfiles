@@ -7,7 +7,7 @@ fi
 
 if [ "$1" = "all" ]; then
     os=$(lsb_release -si)
-    files=$(find "$DOTFILES_DIR" -maxdepth 1 -type d \( -not \( -name '.*' -o -name '!*' -o -name "os_*" \) -o -iname "os_${os}" \) -exec basename {} \;)
+    files=$(find "$DOTFILES_DIR" -maxdepth 1 -type d \( -not \( -name '.*' -o -name '!*' -o -name "os_*" -o -wholename $DOTFILES_DIR \) -o -iname "os_${os}" \) -exec basename {} \;)
 else
     files="$@"
 fi

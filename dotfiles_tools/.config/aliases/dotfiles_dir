@@ -1,4 +1,4 @@
-script_path="${BASH_SOURCE[0]:-${ZSH_ARGZERO:-$0}}"
+script_path="${BASH_SOURCE[0]:-$0}"
 export DOTFILES_DIR=$(
 	git -C "$(dirname "$(readlink -f "$script_path")")" rev-parse --show-toplevel
 )

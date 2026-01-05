@@ -13,6 +13,6 @@ else
 fi
 
 for file in $files; do
-    stow -d "$DOTFILES_DIR" -t "$HOME" -R "$file"
+    stow -d "$DOTFILES_DIR" "$file"
 done
 exec $SHELL

@@ -1,8 +1,15 @@
 _bat(){
-	if [ $# -eq 1 ]; then
-		bat $@
+	if command -v bat >/dev/null 2>&1; then
+        local cmd="bat"
+    elif command -v batcat >/dev/null 2>&1; then
+        local cmd="batcat"
 	else
-		bat --style="numbers,changes,snip,grid,header-filename" $@
+		local cmd="cat"
+	fi
+	if [ $# -eq 1 ]; then
+		$cmd "$@"
+	else
+		$cmd --style="numbers,changes,snip,grid,header-filename" $@
 	fi
 }
 

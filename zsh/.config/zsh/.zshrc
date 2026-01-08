@@ -25,6 +25,7 @@ init_plugins(){
 	zicompinit; zicdreplay
 	zinit depth"1" lucid light-mode for \
 		Aloxaf/fzf-tab \
+		MichaelAquilina/zsh-you-should-use \
 		wait zsh-users/zsh-history-substring-search \
 		wait"0b" atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
 		wait"0b" joshskidmore/zsh-fzf-history-search \

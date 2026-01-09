@@ -2,7 +2,7 @@
 ### Simple ###
 ##############
 alias gp="git push"
-alias gpo="git pull origin $(git branch --show-current)"
+alias gpo="git pull origin \$(git branch --show-current)"
 alias gs="git status"
 alias gc="git commit -m"
 alias ga="git add"

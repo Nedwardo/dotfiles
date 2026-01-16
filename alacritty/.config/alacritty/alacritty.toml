@@ -32,14 +32,12 @@ key = "C"
 mods = "Command"
 
 [[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "T"
-mods = "Command"
+action = "ScrollPageUp"
+key = "PageUp"
 
 [[keyboard.bindings]]
-action = "ToggleFullscreen"
-key = "Return"
-mods = "Command"
+action = "ScrollPageDown"
+key = "PageDown"
 
 [scrolling]
 history = 100000

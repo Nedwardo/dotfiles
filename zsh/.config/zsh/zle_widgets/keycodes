@@ -1,4 +1,14 @@
-source ~/.config/zsh/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+keycodes_file=~/.config/zsh/.zkbd/default
+env_keycodes_file=~/.config/zsh/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+
+if [[ -f $env_keycodes_file ]]; then
+	keycodes_file = $env_keycodes_file
+fi
+if [[ -f $keycodes_file ]]; then
+	source $keycodes_file
+fi
+
+
 
 for key_name base_seq in ${(kv)key}; do
     if [[ "$base_seq" != "^[["* && "$base_seq" != "^[O"* ]]; then

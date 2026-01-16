@@ -7,6 +7,7 @@ alias gs="git status"
 alias gc="git commit -m"
 alias ga="git add"
 alias gac="git commit -am"
+alias gd="git diff"
 
 #################
 ### Functions ###

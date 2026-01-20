@@ -27,7 +27,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 source $XDG_CONFIG_HOME/aliases/xdg_paths
 source $ZDOTDIR/zsh_vars
 source_folder "$XDG_CONFIG_HOME/aliases"
-source_folder "$XDG_CONFIG_HOME/zsh_aliases"
+source_folder "$XDG_CONFIG_HOME/zsh_aliases" &> /dev/null
 
 
 if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then

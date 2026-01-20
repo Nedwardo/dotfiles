@@ -10,3 +10,4 @@ Doesn't have zinit installed or zkbd setup or oh my posh or zoxide
 Add signing key back to git config (Keep in mind that user.signingkey might have to be platform dependant)
 
 make one line gacp command
+setup ls colours (https://github.com/trapd00r/LS_COLORS)

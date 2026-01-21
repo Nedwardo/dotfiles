@@ -31,5 +31,5 @@ source_folder "$XDG_CONFIG_HOME/zsh_aliases" &> /dev/null
 
 
 if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-    exec Hyprland
+    start-hyprland
 fi

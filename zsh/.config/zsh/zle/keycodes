@@ -2,7 +2,7 @@ keycodes_file=~/.config/zsh/.zkbd/default
 env_keycodes_file=~/.config/zsh/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
 
 if [[ -f $env_keycodes_file ]]; then
-	keycodes_file = $env_keycodes_file
+	keycodes_file=$env_keycodes_file
 fi
 if [[ -f $keycodes_file ]]; then
 	source $keycodes_file

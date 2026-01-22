@@ -14,7 +14,7 @@ init_zinit(){
 ##################
 # For the zsh line editor, see man zshzle(1) for more info
 init_zle_plugins(){
-	source "$ZDOTDIR/zle_custom/main"
+	source "$ZDOTDIR/zle/main"
 }
 
 #####################

@@ -1,0 +1,6 @@
+[Unit]
+Description=Vesktop
+Requires=network-online.target
+
+[Service]
+ExecStart=vesktop

@@ -1,0 +1,6 @@
+[Unit]
+Description=Firefox
+Requires=network-online.target
+
+[Service]
+ExecStart=firefox

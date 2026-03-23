@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+hypr_config_dir=$HOME/.config/hypr
+
+template="""wallpaper {
+	monitor = {monitor}
+	path = "{HOME}/documents/wallpapers"
+	fit_mode = contain
+	timeout = 1800
+}
+"""
+template="${template//\{HOME\}/$HOME}"
+
+misc_options="""splash = false"""
+
+monitors=$(hyprctl monitors -j | jq -r "sort_by(.x)|.[].name")
+output_file=$hypr_config_dir/hyprpaper.conf
+
+output=""
+while IFS= read -r monitor; do
+	output="${output}"$'\n'"${template//\{monitor\}/$monitor}"
+done <<EOF
+$monitors
+EOF
+
+output="${misc_options}""${output}"
+
+printf '%s' "$output" > "$output_file"

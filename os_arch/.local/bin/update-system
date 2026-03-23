@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+pupdate; yay -Syu --answerdiff None --answerclean All; flatpak update 

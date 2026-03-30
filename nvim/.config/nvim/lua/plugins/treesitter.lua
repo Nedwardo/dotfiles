@@ -2,5 +2,5 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	lazy = false,
 	branch = "main",
-	build = ":tsupdate",
+	build = ":TSupdate",
 }

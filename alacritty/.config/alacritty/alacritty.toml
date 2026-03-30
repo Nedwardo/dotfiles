@@ -24,12 +24,17 @@ y = 0
 [[keyboard.bindings]]
 action = "Paste"
 key = "V"
-mods = "Command"
+mods = "Control|Shift"
 
 [[keyboard.bindings]]
 action = "Copy"
 key = "C"
-mods = "Command"
+mods = "Control|Shift"
+
+#[[keyboard.bindings]]
+#chars = "\x1b[67;6u"
+#key = "C"
+#mods = "Control|Shift"
 
 [[keyboard.bindings]]
 action = "ScrollPageUp"

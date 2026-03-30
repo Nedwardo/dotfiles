@@ -1,12 +1,12 @@
 [Unit]
-Description=Vesktop
+Description=qBittorrent
 Wants=graphical-session.target
 After=graphical-session.target
 Wants=user-wait-network-online.service
 After=user-wait-network-online.service
 
 [Service]
-ExecStart=vesktop
+ExecStart=qbittorrent
 
 [Install]
 WantedBy=default.target

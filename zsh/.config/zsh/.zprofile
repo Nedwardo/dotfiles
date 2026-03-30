@@ -29,7 +29,6 @@ source $ZDOTDIR/zsh_vars
 source_folder "$XDG_CONFIG_HOME/aliases"
 source_folder "$XDG_CONFIG_HOME/zsh_aliases" &> /dev/null
 
-
-if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-    start-hyprland
+if uwsm check may-start; then
+  exec uwsm start default
 fi

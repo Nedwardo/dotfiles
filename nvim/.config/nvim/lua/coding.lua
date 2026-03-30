@@ -1,34 +1,25 @@
 local M = {}
 
 M.servers = {
-	omnisharp = {
-		cmd = { "omnisharp", "--languageserver" },
-		settings = {
-			omnisharp = {
-				enableRoslynAnalyzers = true,
-				enableEditorConfigSupport = true,
-				enableImportCompletion = true,
-				organizeImportsOnFormat = true,
-			},
+	basedpyright = {
+		disableOrganizeImports = true,
+		analysis = {
+			typeCheckingMode = "strict",
+			autoImportCompletions = true,
+			ignore = { "*" },
 		},
 	},
+	ruff = {},
 }
 
 M.formatters_by_ft = {
-	cs = { "csharpier" },
 	lua = { "stylua" },
-	py = { "ruff" },
+	python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 }
 
 M.formatter_config = {
-	csharpier = {
-		command = "dotnet-csharpier",
-	},
 	stylua = {
 		command = "stylua",
-	},
-	ruff = {
-		command = "ruff format",
 	},
 }
 
@@ -50,6 +41,8 @@ function M.setup_lsp()
 
 	vim.lsp.enable(servers_to_enable)
 end
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 function M.setup_formatting()
 	require("conform").setup({

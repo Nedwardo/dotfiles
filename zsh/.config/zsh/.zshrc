@@ -41,6 +41,7 @@ load_rc_and_completions(){
 	source_folder "$XDG_CONFIG_HOME/compdefs" || print -u2 "⚠️ Failed to init zle completions"
 	export SUDO_EDITOR="nvim"
 	export SYSTEMD_EDITOR="nvim"
+	export EDITOR="nvim"
 }
 
 #################################

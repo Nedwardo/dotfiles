@@ -1,6 +1,5 @@
 [Unit]
 Description=Firefox
-Wants=graphical-session.target
 After=graphical-session.target
 Wants=user-wait-network-online.service
 After=user-wait-network-online.service
@@ -9,4 +8,4 @@ After=user-wait-network-online.service
 ExecStart=firefox
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target

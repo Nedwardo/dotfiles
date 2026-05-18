@@ -1,15 +1,10 @@
 #!/usr/bin/env sh
 
-if [ $# -eq 0 ]; then
-    >&2 echo "Need at least one argument"
-    exit -1
-fi
-
-if [ "$1" = "all" ]; then
+if [ $# -eq 0 ] || [ $1 = "all" ]; then
     os=$(lsb_release -si)
     files=$(find "$DOTFILES_DIR" -maxdepth 1 -type d \( -not \( -name '.*' -o -name '!*' -o -name "os_*" -o -wholename $DOTFILES_DIR \) -o -iname "os_${os}" \) -exec basename {} \;)
 else
-    files="$@"
+	files="$@"
 fi
 
 for file in $files; do

@@ -29,6 +29,9 @@ source $ZDOTDIR/zsh_vars
 source_folder "$XDG_CONFIG_HOME/aliases"
 source_folder "$XDG_CONFIG_HOME/zsh_aliases" &> /dev/null
 
-if uwsm check may-start; then
-  exec uwsm start default
+if [[ -z "${MANAGERPIDFDID:-}" ]] && uwsm check may-start -v >> /tmp/uwsm-maystart.log 2>&1; then
+  uwsm start default
+else
+  echo "$(date): may-start failed (exit $?)" >> /tmp/uwsm-maystart.log
+  uwsm check may-start >> /tmp/uwsm-maystart.log 2>&1
 fi

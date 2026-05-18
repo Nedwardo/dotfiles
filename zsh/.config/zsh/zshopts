@@ -3,7 +3,7 @@
 ###############
 unsetopt menu_complete
 unsetopt flowcontrol
-setopt correct_all
+setopt correct
 #setopt auto_menu TODO consider this
 
 ##########

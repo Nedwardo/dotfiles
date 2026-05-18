@@ -1,11 +1,11 @@
 [Unit]
-Description=qBittorrent
+Description=HexChat
 After=graphical-session.target
 Wants=user-wait-network-online.service
 After=user-wait-network-online.service
 
 [Service]
-ExecStart=qbittorrent
+ExecStart=hexchat
 
 [Install]
 WantedBy=graphical-session.target

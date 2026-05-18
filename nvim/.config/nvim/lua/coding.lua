@@ -5,16 +5,46 @@ M.servers = {
 		disableOrganizeImports = true,
 		analysis = {
 			typeCheckingMode = "strict",
-			autoImportCompletions = true,
+			diagnosticSeverityOverrides = {
+				reportMissingTypeArgument = false,
+			},
+			autoImportCompletions = false,
 			ignore = { "*" },
 		},
 	},
 	ruff = {},
+	ts_server = {
+		cmd = { "typescript-language-server", "--stdio" },
+		filetypes = { "typescript", "javascript" },
+	},
+	lua_language_server = {
+		cmd = { "lua-language-server" },
+		filetypes = { "lua" },
+		root_markers = {
+			".luarc.json",
+			".luarc.jsonc",
+			".luacheckrc",
+			".stylua.toml",
+			".git",
+		},
+	},
+	bash_language_server = {
+		cmd = { "bash-language-server" },
+		args = { "start" },
+		filetypes = { "sh" },
+	},
+	vscode_json_languageserver = {
+		cmd = { "vscode-json-languageserver", "--stdio" },
+		filetypes = { "json" },
+	},
 }
 
 M.formatters_by_ft = {
 	lua = { "stylua" },
 	python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+	javascript = { "prettier" },
+	json = { "prettier" },
+	sh = { "shfmt" },
 }
 
 M.formatter_config = {
@@ -25,6 +55,8 @@ M.formatter_config = {
 
 M.linters_by_ft = {}
 M.linter_config = {}
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 function M.setup_lsp()
 	local servers_to_enable = {}
@@ -41,8 +73,6 @@ function M.setup_lsp()
 
 	vim.lsp.enable(servers_to_enable)
 end
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 function M.setup_formatting()
 	require("conform").setup({

@@ -5,8 +5,6 @@ vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"
 end)
 
-vim.o.termguicolors = true
-
 vim.opt.updatetime = 300
 
 vim.g.mapleader = " "
@@ -29,8 +27,22 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 set_dynamic_scrolloff()
 
+vim.diagnostic.config({
+	update_in_insert = false,
+	severity_sort = true,
+	float = { border = "rounded", source = "if_many" },
+	underline = { severity = { min = vim.diagnostic.severity.WARN } },
+
+	virtual_text = true, -- Text shows up at the end of the line
+
+	-- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
+	jump = { on_jump = true },
+})
 vim.o.undofile = true
 
 require("lazy-bootstrap")
 require("lazy").setup("plugins")
 require("keybinds")
+
+vim.cmd.colorscheme("tokyonight")
+vim.o.termguicolors = true

@@ -1,13 +1,27 @@
 #!/usr/bin/env sh
+detect_os() {
+	if [ -f /etc/os-release ]; then
+		. /etc/os-release
+		case $ID in 
+			 nixos) echo "nix";;
+			 arch) echo "arch";;
+			 *) echo "";;
+		esac
+	else
+		echo "";
+	fi
+
+}
 
 if [ $# -eq 0 ] || [ $1 = "all" ]; then
-    os=$(lsb_release -si)
-    files=$(find "$DOTFILES_DIR" -maxdepth 1 -type d \( -not \( -name '.*' -o -name '!*' -o -name "os_*" -o -wholename $DOTFILES_DIR \) -o -iname "os_${os}" \) -exec basename {} \;)
+	os=$(detect_os)	
+
+	files=$(find "$DOTFILES_DIR" -maxdepth 1 -type d \( -not \( -name '.*' -o -name '!*' -o -name "os_*" -o -wholename $DOTFILES_DIR \) -o -iname "os_${os}" \) -exec basename {} \;)
 else
 	files="$@"
 fi
 
 for file in $files; do
-    stow -d "$DOTFILES_DIR" "$file"
+	stow -d "$DOTFILES_DIR" "$file"
 done
 exec $SHELL

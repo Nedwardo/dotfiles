@@ -1,0 +1,18 @@
+[tools]
+"aqua:LuaLS/lua-language-server" = "latest"
+cargo = "latest"
+go = "latest"
+java = "openjdk-25.0.0"
+lua = "5.1"
+ninja = "latest"
+node = "latest"
+npm = "latest"
+prettier = "latest"
+python = "3.14"
+ruby = "latest"
+rust = "latest"
+rust-analyzer = "latest"
+stylua = "latest"
+
+[settings]
+experimental = true

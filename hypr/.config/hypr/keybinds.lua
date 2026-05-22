@@ -11,7 +11,7 @@ hl.bind(main_mod .. " + ALT + SPACE", hl.dsp.exec_cmd("rofi -show window"))
 -- Screenshots
 hl.bind(
 	main_mod .. " + Print",
-	hl.dsp.exec_cmd('wayfreeze --after-freeze-cmd \'grim -g "$(slurp)" - | wl-copy; killall wayfreeze')
+	hl.dsp.exec_cmd("wayfreeze --after-freeze-cmd 'grim -g \"$(slurp)\" - | wl-copy; killall wayfreeze'")
 )
 
 -- Kill and create

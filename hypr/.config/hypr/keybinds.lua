@@ -2,7 +2,7 @@
 local main_mod = "SUPER"
 local terminal = "alacritty"
 -- Lock screen
-hl.bind(main_mod .. " + L", hl.dsp.exit)
+hl.bind(main_mod .. " + L", hl.dsp.exit())
 
 -- Rofi
 hl.bind(main_mod .. " + SPACE", hl.dsp.exec_cmd("rofi -show drun"))
@@ -19,8 +19,8 @@ hl.bind(main_mod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(main_mod .. " + W", hl.dsp.window.close())
 
 -- Window Control
-hl.bind(main_mod .. " + V", hl.dsp.window.float)
-hl.bind(main_mod .. " + F", hl.dsp.window.fullscreen)
+hl.bind(main_mod .. " + V", hl.dsp.window.float())
+hl.bind(main_mod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(main_mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(main_mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 

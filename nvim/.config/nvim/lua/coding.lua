@@ -37,6 +37,11 @@ M.servers = {
 		cmd = { "vscode-json-languageserver", "--stdio" },
 		filetypes = { "json" },
 	},
+	nixd = {
+		cmd = { "nixd" },
+		filetypes = { "nix" },
+		root_markers = { "flake.nix", ".git" },
+	},
 }
 
 M.formatters_by_ft = {
@@ -45,6 +50,7 @@ M.formatters_by_ft = {
 	javascript = { "prettier" },
 	json = { "prettier" },
 	sh = { "shfmt" },
+	nix = { "nixfmt" },
 }
 
 M.formatter_config = {

@@ -27,3 +27,11 @@ hl.window_rule({
 	},
 	workspace = "10 silent"
 })
+hl.window_rule({
+	name="hexchat",
+	match = {
+		class = "Hexchat$"
+	},
+	workspace = "10 silent",
+	float = false
+})

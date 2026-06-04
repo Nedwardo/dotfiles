@@ -1,6 +1,6 @@
 -- See https://wiki.hyprland.org/Configuring/Binds/
 local main_mod = "SUPER"
-local terminal = "alacritty"
+
 -- Lock screen
 hl.bind(main_mod .. " + L", hl.dsp.exit())
 
@@ -15,7 +15,7 @@ hl.bind(
 )
 
 -- Kill and create
-hl.bind(main_mod .. " + Q", hl.dsp.exec_cmd(terminal))
+hl.bind(main_mod .. " + Q", hl.dsp.exec_cmd("exec $TERMINAL"))
 hl.bind(main_mod .. " + W", hl.dsp.window.close())
 
 -- Window Control

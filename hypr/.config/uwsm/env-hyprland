@@ -1,2 +1,2 @@
-export HYPRCURSOR_SIZE = 30
-export HYPRCURSOR_THEME = "rose-pine-hyprcursor"
+export HYPRCURSOR_SIZE=30
+export HYPRCURSOR_THEME="rose-pine-hyprcursor"

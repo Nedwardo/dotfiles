@@ -1,7 +1,7 @@
 [tools]
 "aqua:LuaLS/lua-language-server" = "latest"
-cargo = "latest"
 go = "latest"
+godot = "4.5"
 java = "openjdk-25.0.0"
 lua = "5.1"
 ninja = "latest"

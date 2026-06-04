@@ -10,7 +10,7 @@ or, alternativley if you've stow'd .aliases, and added .aliases to your aliases 
 ```sh
 update-stow <foldername>
 ```
-Where `<foldername>` is the name of dotfile you'd like to install (alacritty, firefox, mise, python, tmux, wezterm, zim)
+Where `<foldername>` is the name of dotfile you'd like to install (ghostty, firefox, mise, python, tmux, wezterm, zim)
 
 Do note for firefox, some more configuration will be required.
 

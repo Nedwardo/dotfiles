@@ -1,37 +1,43 @@
-# See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+-- # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 hl.window_rule({
-	name="prevent maximize",
+	name = "prevent maximize",
 	match = {
-		class= "*"
+		class = "*",
 	},
-	fullscreen=false
+	fullscreen = false,
 })
 hl.window_rule({
-	name="volume control float",
+	name = "volume control float",
 	match = {
-		initial_class = "^com\\.saivert\\.pwvucontrol$"
+		initial_class = "^com\\.saivert\\.pwvucontrol$",
 	},
-	float = true
+	float = true,
 })
 hl.window_rule({
-	name="steam prevent float",
+	name = "steam prevent float",
 	match = {
-		initial_class = "^steam$"
+		initial_class = "^steam$",
 	},
-	float = false
+	float = false,
 })
 hl.window_rule({
-	name="qBittorrent",
+	name = "qBittorrent",
 	match = {
-		class = ".+qBittorrent$"
-	},
-	workspace = "10 silent"
-})
-hl.window_rule({
-	name="hexchat",
-	match = {
-		class = "Hexchat$"
+		class = ".+qBittorrent$",
 	},
 	workspace = "10 silent",
-	float = false
+})
+hl.window_rule({
+	name = "hexchat",
+	match = {
+		class = "^Hexchat$",
+	},
+	workspace = "10 silent",
+})
+hl.window_rule({
+	name = "discord",
+	match = {
+		initial_class = ".iscord",
+	},
+	workspace = "2 silent",
 })

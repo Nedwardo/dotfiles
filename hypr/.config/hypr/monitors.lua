@@ -1,10 +1,9 @@
-local left_main ="desc: ViewSonic Corporation VX2458-mhd" 
+local left_main = "desc: ViewSonic Corporation VX2458-mhd"
 local right_main = "desc: HP Inc. HP E233 CNC0261JJL"
 local laptop = "desc: AU Optronics 0xD291"
 local tv = "desc: Hisense Electric Co. Ltd."
 local other_tv = "desc: LG Electronics LG TV"
 local TOTAL_WORKSPACES = 10
-
 
 hl.monitor({
 	output = left_main,
@@ -19,7 +18,9 @@ hl.monitor({ output = other_tv, mode = "4096x2160@60.00Hz", position = "0x0", sc
 
 local function get_ordered_monitors()
 	local f = io.popen("hyprctl monitors -j")
-	if not f then return {} end
+	if not f then
+		return {}
+	end
 	local raw = f:read("*a")
 	f:close()
 
@@ -28,31 +29,37 @@ local function get_ordered_monitors()
 		local name = entry:match('"name"%s*:%s*"([^"]+)"')
 		local x = entry:match('"x"%s*:%s*(%-?%d+)')
 		if name and x then
-		monitors[#monitors + 1] = { name = name, x = tonumber(x) }
+			monitors[#monitors + 1] = { name = name, x = tonumber(x) }
 		end
 	end
 
-	table.sort(monitors, function(a, b) return a.x < b.x end)
+	table.sort(monitors, function(a, b)
+		return a.x < b.x
+	end)
 	return monitors
 end
 local function distribute_workspaces()
 	local monitors = get_ordered_monitors()
 	local n = #monitors
-	if n == 0 then return end
-
+	if n == 0 then
+		return
+	end
+	file = io.open("/home/nedwardo/hypr_debug", "w")
 
 	for ws = 1, TOTAL_WORKSPACES do
+		file:write("monitor: " .. monitors[(ws - 1) % n + 1].name .. ", ws: " .. ws)
 		hl.dispatch(hl.dsp.workspace.move_to_monitor({
 			workspace = tostring(ws),
-			monitor = monitors[( ws -1 ) % n + 1].name
+			monitor = monitors[(ws - 1) % n + 1].name,
 		}))
 	end
+	file:close()
 end
 
 distribute_workspaces()
 
-hl.on("monitor.added",   distribute_workspaces )
-hl.on("monitor.removed", distribute_workspaces )
+hl.on("monitor.added", distribute_workspaces)
+hl.on("monitor.removed", distribute_workspaces)
 -- for i = 1, 5 do
 -- 	hl.workspace_rule({
 -- 		workspace = "" .. i * 2 - 1,

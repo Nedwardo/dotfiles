@@ -27,7 +27,6 @@ image/x-targa=qimgv.desktop
 image/x-tga=qimgv.desktop
 image/x-xbitmap=qimgv.desktop
 image/x-xpixmap=qimgv.desktop
-
 text/html=firefox.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
@@ -38,3 +37,4 @@ application/x-xpinstall=firefox.desktop
 application/pdf=firefox.desktop
 application/json=firefox.desktop
 application/xml=firefox.desktop
+inode/directory=yazi.desktop

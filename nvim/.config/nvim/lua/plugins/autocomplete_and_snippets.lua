@@ -7,6 +7,9 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"onsails/lspkind.nvim",
+		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+		"rafamadriz/friendly-snippets",
+		"saadparwaiz1/cmp_luasnip",
 	},
 	opts = function()
 		local cmp = require("cmp")
@@ -21,7 +24,6 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "path" },
-			}, {
 				{ name = "buffer" },
 			}),
 			formatting = {
@@ -30,6 +32,11 @@ return {
 					maxwidth = 40,
 					ellipsis_char = "…",
 				}),
+			},
+			snippet = {
+				expand = function(args)
+					vim.snippet.expand(args.body)
+				end,
 			},
 			sorting = defaults.sorting,
 		}

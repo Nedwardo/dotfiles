@@ -1,0 +1,8 @@
+[Unit]
+Description=udiskie automounter
+
+[Service]
+ExecStart=udiskie
+
+[Install]
+WantedBy=default.target

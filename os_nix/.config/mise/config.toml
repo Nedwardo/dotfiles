@@ -1,0 +1,12 @@
+[settings]
+experimental = true
+
+[settings.python]
+compile = false
+
+[tools]
+"nix:cargo" = "latest"
+"nix:go" = "latest"
+"nix:lua" = "latest"
+"nix:python" = "latest"
+"nix:stylua" = "latest"

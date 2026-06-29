@@ -1,5 +1,5 @@
 export XCURSOR_SIZE=33
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/settings"
-export TERMINAL="/usr/bin/ghostty"
+export TERMINAL="ghostty"
 export TERMCMD="$TERMINAL"

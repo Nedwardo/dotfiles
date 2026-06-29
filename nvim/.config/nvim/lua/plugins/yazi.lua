@@ -1,6 +1,7 @@
 return {
 	"mikavilpas/yazi.nvim",
-	init = function()
-		vim.g.loaded_netrwPlugin = 1
-	end,
+	event = "VeryLazy",
+	dependencies = {
+		{ "nvim-lua/plenary.nvim", lazy = true },
+	},
 }

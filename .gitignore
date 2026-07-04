@@ -1,6 +1,6 @@
 # Machine specific
-hypr/.config/hypr/monitors.conf
-hypr/.config/hypr/window_rules.conf
+hypr/.config/hypr/monitors.*
+hypr/.config/hypr/window_rules.*
 nvim/.config/nvim/lazy-lock.json
 
 # Temporary Scripts

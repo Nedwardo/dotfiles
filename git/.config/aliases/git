@@ -18,4 +18,3 @@ function _gcp(){
 }
 alias gcp="_gcp"
 alias gacp="ga && gcp"
-

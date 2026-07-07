@@ -1,0 +1,1 @@
+eval $(tldr --print-completion zsh)

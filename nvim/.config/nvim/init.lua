@@ -33,10 +33,14 @@ vim.diagnostic.config({
 	float = { border = "rounded", source = "if_many" },
 	underline = { severity = { min = vim.diagnostic.severity.WARN } },
 
-	virtual_text = true, -- Text shows up at the end of the line
+	virtual_text = true,
 
 	-- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
-	jump = { on_jump = true },
+	jump = {
+		on_jump = function(_, bufnr)
+			vim.diagnostic.open_float(bufnr, { scope = "cursor", focus = false })
+		end,
+	},
 })
 vim.o.undofile = true
 

@@ -45,6 +45,7 @@ end, { noremap = true, silent = true })
 
 map("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Execute the current file" })
 map("n", "<leader>?", "<cmd>:Telescope keymaps<CR>", { desc = "Show keymaps" })
+map("n", "<leader>q", "<cmd>:wqa<CR>", { desc = "Quits vim" })
 
 -- ###############
 -- ### Windows ###
@@ -138,8 +139,12 @@ map("n", "U", vim.lsp.buf.hover, { desc = "Hover documentation" })
 
 map("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
 map("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type definition" })
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "[d", function()
+	vim.diagnostic.jump({ count = -1 })
+end, { desc = "Previous diagnostic" })
+map("n", "]d", function()
+	vim.diagnostic.jump({ count = 1 })
+end, { desc = "Next diagnostic" })
 on_hover(function()
 	vim.diagnostic.open_float(nil, {
 		focusable = false,

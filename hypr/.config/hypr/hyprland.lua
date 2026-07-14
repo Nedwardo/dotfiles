@@ -18,6 +18,11 @@ require("monitors")
 require("window_rules")
 
 -- ##################
+-- ### Workspaces ###
+-- ##################
+require("workspaces")
+
+-- ##################
 -- ### Appearance ###
 -- ##################
 hl.config({

@@ -6,12 +6,6 @@ local hypr_config_dir = os.getenv("HOME") .. "/.config/hypr"
 local active_border = "rgba(33ccffee)"
 local inactive_border = "rgba(595959aa)"
 
--- ################
--- ### Monitors ###
--- ################
--- See https://wiki.hyprland.org/Configuring/Monitors/
-require("monitors")
-
 -- ###############
 -- ### Windows ###
 -- ###############
@@ -73,5 +67,5 @@ hl.config({
 	},
 })
 
-require("io")
+require("hardware")
 require("keybinds")

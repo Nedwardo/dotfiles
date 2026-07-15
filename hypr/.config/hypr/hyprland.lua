@@ -73,24 +73,5 @@ hl.config({
 	},
 })
 
--- #############
--- ### Input ###
--- #############
--- See https://wiki.hyprland.org/Configuring/Variables/#input
-hl.config({
-	input = {
-		kb_layout = "gb",
-		kb_variant = "",
-		kb_model = "",
-		kb_options = "ctrl:nocaps",
-		kb_rules = "",
-		follow_mouse = 2,
-		sensitivity = 0.75,
-		accel_profile = "flat",
-		touchpad = {
-			natural_scroll = false,
-		},
-	},
-})
-
+require("io")
 require("keybinds")

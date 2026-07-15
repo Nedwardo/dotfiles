@@ -7,10 +7,8 @@ hl.window_rule({
 	fullscreen = false,
 })
 hl.window_rule({
-	name = "volume control float",
-	match = {
-		initial_class = "^com\\.saivert\\.pwvucontrol$",
-	},
+	name = "waybar spawned",
+	match = { initial_class = "com.waybar.spawned.ghostty" },
 	float = true,
 })
 hl.window_rule({

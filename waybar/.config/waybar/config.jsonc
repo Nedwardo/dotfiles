@@ -41,7 +41,7 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "blueman-manager"
+    "on-click": "setsid sh -c '$WAYBAR_TERM_WITH bluetui'"
   },
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -103,7 +103,7 @@
   },
   "memory": {
     "format": "<span foreground='#9ece6a'>🎟</span> {}%",
-    "on-click": "$TERM htop"
+    "on-click": "setsid sh -c '$WAYBAR_TERM_WITH htop'"
   },
   "tray": {
     "icon-size": 20,
@@ -111,7 +111,8 @@
     "spacing": 6
   },
   "cpu": {
-    "format": "<span foreground='#ff005f'></span>  {usage}%"
+    "format": "<span foreground='#ff005f'></span>  {usage}%",
+    "on-click": "setsid sh -c '$WAYBAR_TERM_WITH htop'"
   },
   "custom/mic": {
     "format": "<span color='#f7768e'>🎙</span> {}",

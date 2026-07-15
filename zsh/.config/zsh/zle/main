@@ -4,3 +4,4 @@ autoload -Uz add-zle-hook-widget
 source "$zle_widgets_folder/keycodes"
 source "$zle_widgets_folder/history"
 source "$zle_widgets_folder/keybinds"
+source "$zle_widgets_folder/custom_dirs"

@@ -105,7 +105,6 @@ keymap = [
 
 	# Find
 	{ on = "/", run = "find --smart",            desc = "Find next file" },
-	{ on = "?", run = "find --previous --smart", desc = "Find previous file" },
 	{ on = "n", run = "find_arrow",              desc = "Next found" },
 	{ on = "N", run = "find_arrow --previous",   desc = "Previous found" },
 
@@ -126,36 +125,16 @@ keymap = [
 
 	# Goto
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
-	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go ~/.config" },
-	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go ~/Downloads" },
+	{ on = [ "g", "d" ],       run = "cd ~/downloads",   desc = "Go ~/downloads" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Jump interactively" },
 	{ on = [ "g", "f" ],       run = "follow",           desc = "Follow hovered symlink" },
-
-	# Tabs
-	{ on = [ "t", "t" ], run = "tab_create --current",     desc = "Create a new tab in CWD" },
-	{ on = [ "t", "r" ], run = "tab_rename --interactive", desc = "Rename current tab" },
-
-	{ on = "1", run = "tab_switch 0", desc = "Switch to first tab" },
-	{ on = "2", run = "tab_switch 1", desc = "Switch to second tab" },
-	{ on = "3", run = "tab_switch 2", desc = "Switch to third tab" },
-	{ on = "4", run = "tab_switch 3", desc = "Switch to fourth tab" },
-	{ on = "5", run = "tab_switch 4", desc = "Switch to fifth tab" },
-	{ on = "6", run = "tab_switch 5", desc = "Switch to sixth tab" },
-	{ on = "7", run = "tab_switch 6", desc = "Switch to seventh tab" },
-	{ on = "8", run = "tab_switch 7", desc = "Switch to eighth tab" },
-	{ on = "9", run = "tab_switch 8", desc = "Switch to ninth tab" },
-
-	{ on = "[", run = "tab_switch -1 --relative", desc = "Switch to previous tab" },
-	{ on = "]", run = "tab_switch 1 --relative",  desc = "Switch to next tab" },
-
-	{ on = "{", run = "tab_swap -1", desc = "Swap current tab with previous tab" },
-	{ on = "}", run = "tab_swap 1",  desc = "Swap current tab with next tab" },
 
 	# Tasks
 	{ on = "w", run = "tasks:show", desc = "Show task manager" },
 
 	# Help
 	{ on = "~",    run = "help", desc = "Open help" },
+	{ on = "?",    run = "help", desc = "Open help" },
 	{ on = "<F1>", run = "help", desc = "Open help" },
 ]
 

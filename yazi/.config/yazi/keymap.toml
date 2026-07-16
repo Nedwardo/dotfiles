@@ -373,4 +373,3 @@ keymap = [
 	# Filtering
 	{ on = "f", run = "filter", desc = "Filter help items" },
 ]
->>>>>>> 648768a (Added yazi settings to be modified)

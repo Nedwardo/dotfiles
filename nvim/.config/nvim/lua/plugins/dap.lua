@@ -8,6 +8,9 @@ return {
 	config = function()
 		local dap = require("dap")
 		local ui = require("dapui")
+
+		ui.setup()
+
 		dap.listeners.before.attach.dapui_config = function()
 			ui.open()
 		end

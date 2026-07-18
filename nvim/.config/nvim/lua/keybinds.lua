@@ -118,6 +118,7 @@ map("n", "<leader>fg", telescope.live_grep, { desc = "Telescope live grep" })
 map("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
 map("n", "<leader>fm", telescope.marks, { desc = "Telescope marks" })
 map("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
+map("n", "<leader>fl", telescope.lsp_document_symbols, { desc = "Telescope lsp symbols" })
 
 -- ###############
 -- ### Conform ###

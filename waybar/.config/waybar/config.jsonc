@@ -97,7 +97,7 @@
     "interval": 1
   },
   "pulseaudio": {
-    "on-click": "pwvucontrol",
+    "on-click": "pavucontrol",
     "format": "<span color='#f7768e'> </span> {volume}%",
     "format-muted": "<span color='#f7768e'>🔇</span> {volume}"
   },
@@ -121,7 +121,7 @@
     "interval": 15,
     "justify": "center",
     "exec": "/home/nedwardo/.config/waybar/get_mic_volume",
-    "on-click": "pwvucontrol"
+    "on-click": "pavucontrol"
   },
   "custom/notification": {
     "tooltip": false,
@@ -164,7 +164,7 @@
     "tooltip-format-wifi": " {essid} ",
     "tooltip-format-ethernet": " {ipaddr}/{cidr} ",
     "tooltip-format-disconnected": "📵",
-    "on-click": "iwgtk || nm-connection-editor",
+    "on-click": "iwgtk",
     "max-length": 10
   }
 }

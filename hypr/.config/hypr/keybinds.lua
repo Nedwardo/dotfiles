@@ -1,9 +1,6 @@
 -- See https://wiki.hyprland.org/Configuring/Binds/
 local main_mod = "SUPER"
 
--- Lock screen
-hl.bind(main_mod .. " + L", hl.dsp.exit())
-
 -- Rofi
 hl.bind(main_mod .. " + SPACE", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind(main_mod .. " + ALT + SPACE", hl.dsp.exec_cmd("rofi -show window"))
@@ -25,15 +22,23 @@ hl.bind(main_mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(main_mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 hl.bind(main_mod .. " + CTRL + left", hl.dsp.window.move({ direction = "left" }))
+hl.bind(main_mod .. " + CTRL + h", hl.dsp.window.move({ direction = "left" }))
 hl.bind(main_mod .. " + CTRL + right", hl.dsp.window.move({ direction = "right" }))
+hl.bind(main_mod .. " + CTRL + l", hl.dsp.window.move({ direction = "right" }))
 hl.bind(main_mod .. " + CTRL + up", hl.dsp.window.move({ direction = "up" }))
+hl.bind(main_mod .. " + CTRL + k", hl.dsp.window.move({ direction = "up" }))
 hl.bind(main_mod .. " + CTRL + down", hl.dsp.window.move({ direction = "down" }))
+hl.bind(main_mod .. " + CTRL + j", hl.dsp.window.move({ direction = "down" }))
 
 -- Focus Swapping
 hl.bind(main_mod .. " + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(main_mod .. " + h", hl.dsp.focus({ direction = "left" }))
 hl.bind(main_mod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(main_mod .. " + l", hl.dsp.focus({ direction = "right" }))
 hl.bind(main_mod .. " + up", hl.dsp.focus({ direction = "up" }))
+hl.bind(main_mod .. " + k", hl.dsp.focus({ direction = "up" }))
 hl.bind(main_mod .. " + down", hl.dsp.focus({ direction = "down" }))
+hl.bind(main_mod .. " + j", hl.dsp.focus({ direction = "down" }))
 
 -- Workspace control
 for i = 1, 10 do

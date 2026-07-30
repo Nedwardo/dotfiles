@@ -97,7 +97,7 @@
     "interval": 1
   },
   "pulseaudio": {
-    "on-click": "pavucontrol",
+    "on-click": "pavucontrol || pwvucontrol",
     "format": "<span color='#f7768e'> </span> {volume}%",
     "format-muted": "<span color='#f7768e'>🔇</span> {volume}"
   },

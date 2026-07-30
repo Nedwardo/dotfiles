@@ -28,4 +28,6 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
 export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
 export WINE_PREFIX="$XDG_DATA_HOME/wine"
+export WINEPREFIX="$WINE_PREFIX"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export RENPY_PATH_TO_SAVES="$XDG_DATA_HOME/renpy"

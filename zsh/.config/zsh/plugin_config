@@ -1,0 +1,15 @@
+###############
+### fzf-tab ###
+###############
+zstyle ':fzf-tab:*' fzf-bindings 'tab:down' 'btab:up' 'space:accept'
+zstyle ':fzf-tab:*' switch-group '<' '>'
+zstyle ':fzf-tab:*' continuous-trigger '/'
+zstyle ':fzf-tab:*' print-query 'alt-enter'
+
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
+
+zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color $word'
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+zstyle ':fzf-tab:complete:(export|unset|expand):*' fzf-preview 'echo ${(P)word} | bat -plhelp --color=always'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat $realpath 2>/dev/null || eza -1 $realpath 2>/dev/null'

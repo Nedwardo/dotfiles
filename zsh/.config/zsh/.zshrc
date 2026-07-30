@@ -38,6 +38,9 @@ init_plugins(){
 ###############
 ### My shit ###
 ###############
+general_zsh_modifications(){
+	source "$ZDOTDIR/plugin_config"|| print -u2 "⚠️ Failed to modify plugins"
+}
 load_rc_and_completions(){
 	source_folder "$XDG_CONFIG_HOME/rc.d" || print -u2 "⚠️ Failed to init rc.d scripts"
 	source_folder "$XDG_CONFIG_HOME/compdefs" || print -u2 "⚠️ Failed to init zle completions"
@@ -55,4 +58,5 @@ init_zinit || print -u2 "⚠️ zinit init failed"
 source "$ZDOTDIR/zsh_autocomplete_config" || print -u2 "⚠️ autocomplete config failed"
 source "$ZDOTDIR/zshopts" || print -u2 "⚠️ shell options init failed"
 init_plugins || print -u2 "⚠️ plugin init failed"
-load_rc_and_completions || print -u2 "⚠️ My stuff init failed"
+load_rc_and_completions || print -u2 "⚠️ Loading system wide shell modifications failed"
+general_zsh_modifications || print -u2 "⚠️ Loading general zsh modifications failed"

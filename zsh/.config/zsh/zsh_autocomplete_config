@@ -52,5 +52,9 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
         usbmux uucp vcsa wwwrun xfs '_*'
 
 
+####################
+### git checkout ###
+####################
+zstyle ':completion:*:git-checkout:*' sort false
 
 autoload -U +X bashcompinit && bashcompinit

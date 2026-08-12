@@ -39,3 +39,10 @@ hl.window_rule({
 	},
 	workspace = "2 silent",
 })
+hl.window_rule({
+	name = "runescape",
+	match = {
+		initial_title = "RuneLite",
+	},
+	float = true,
+})

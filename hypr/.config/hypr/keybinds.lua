@@ -60,3 +60,40 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 -- Misc fn buttons
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 5%+"))
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 5%-"))
+
+local transparent_opacity = 0.3
+local query_delay = 10
+
+hl.bind("SUPER + O", function()
+	local w = hl.get_active_window()
+	if w == nil then
+		return
+	end
+
+	local sel = "address:" .. w.address
+	local addrSlug = w.address:gsub("0x", "")
+	local tmpFile = "/tmp/hypr_opacity_" .. addrSlug .. ".tmp"
+
+	hl.exec_cmd("hyprctl getprop " .. sel .. " opacity > " .. tmpFile .. " 2>/dev/null; ")
+
+	hl.timer(function()
+		local f = io.open(tmpFile, "r")
+		if f == nil then
+			return
+		end
+
+		local out = f:read("*a")
+		f:close()
+		os.remove(tmpFile)
+
+		if out == nil then
+			return
+		end
+
+		local current = tonumber(out:match("[%d%.]+")) or 1
+		local target = (current >= 0.999) and transparent_opacity or 1
+
+		hl.dispatch(hl.dsp.window.set_prop({ prop = "opacity", value = target, window = sel }))
+		hl.dispatch(hl.dsp.window.set_prop({ prop = "opacity_inactive", value = target, window = sel }))
+	end, { timeout = query_delay, type = "oneshot" })
+end)

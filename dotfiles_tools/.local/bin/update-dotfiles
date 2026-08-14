@@ -1,4 +1,9 @@
 #!/usr/bin/env sh
+[ -n "$DOTFILES_DIR" ] && [ -d "$DOTFILES_DIR" ] || {
+	echo "DOTFILES_DIR not set or missing" >&2
+	exit 1
+}
+
 detect_os() {
 	[ -f /etc/os-release ] || return
 	. /etc/os-release
@@ -8,12 +13,10 @@ detect_os() {
 	esac
 }
 
-stow_os_folder() {
+stow_folder() {
 	for path in "$1"/*/; do
-		printf 'arg = %s\n' "$1"
-		printf 'path = %s\n' "$path"
+		[ -d "$path" ] || continue
 		name=$(basename "$path")
-		printf 'name = %s\n' "$name"
 		if [ "$name" = "system" ]; then
 			printf 'Stowing %s into / (needs sudo)\n' "$path"
 			sudo stow -t / -d "$1" -R system
@@ -23,18 +26,29 @@ stow_os_folder() {
 	done
 }
 
+os=$(detect_os)
+os_dir="$DOTFILES_DIR/os_$os"
+if [ -n "$os" ] && [ -d "$os_dir" ]; then
+	stow_folder "$os_dir"
+
+	if [ -f "$os_dir/exclude.txt" ]; then
+		exclude_file="$os_dir/exclude.txt"
+	fi
+
+fi
+
 for folder in "$DOTFILES_DIR"/*/; do
 	[ -d "$folder" ] || continue
 	name=$(basename "$folder")
 	case $name in
 	.* | '!'* | os_*) continue ;;
 	esac
-	stow -d "$DOTFILES_DIR" -R "$name"
+
+	if [ -n "${exclude_file:-}" ] && grep -qxF "$name" "$exclude_file"; then
+		continue
+	fi
+
+	stow_folder "$folder"
 done
 
-os=$(detect_os)
-if [ -n "$os" ] && [ -d "$DOTFILES_DIR/os_$os" ]; then
-	stow_os_folder "$DOTFILES_DIR/os_$os"
-fi
-
-exec $SHELL
+exec "$SHELL"

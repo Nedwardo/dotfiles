@@ -103,7 +103,7 @@
   },
   "memory": {
     "format": "<span foreground='#9ece6a'>🎟</span> {}%",
-    "on-click": "setsid sh -c '$WAYBAR_TERM_WITH htop'"
+    "on-click": "setsid sh -c '$WAYBAR_TERM_WITH btop'"
   },
   "tray": {
     "icon-size": 20,
@@ -112,7 +112,7 @@
   },
   "cpu": {
     "format": "<span foreground='#ff005f'></span>  {usage}%",
-    "on-click": "setsid sh -c '$WAYBAR_TERM_WITH htop'"
+    "on-click": "setsid sh -c '$WAYBAR_TERM_WITH btop'"
   },
   "custom/mic": {
     "format": "<span color='#f7768e'>🎙</span> {}",

@@ -1,27 +1,40 @@
 #!/usr/bin/env sh
 detect_os() {
-	if [ -f /etc/os-release ]; then
-		. /etc/os-release
-		case $ID in 
-			 nixos) echo "nix";;
-			 arch) echo "arch";;
-			 *) echo "";;
-		esac
-	else
-		echo "";
-	fi
-
+	[ -f /etc/os-release ] || return
+	. /etc/os-release
+	case $ID in
+	nixos) echo "nix" ;;
+	arch) echo "arch" ;;
+	esac
 }
 
-if [ $# -eq 0 ] || [ $1 = "all" ]; then
-	os=$(detect_os)	
+stow_os_folder() {
+	for path in "$1"/*/; do
+		printf 'arg = %s\n' "$1"
+		printf 'path = %s\n' "$path"
+		name=$(basename "$path")
+		printf 'name = %s\n' "$name"
+		if [ "$name" = "system" ]; then
+			printf 'Stowing %s into / (needs sudo)\n' "$path"
+			sudo stow -t / -d "$1" -R system
+		else
+			stow -t "$HOME" -d "$1" -R "$name"
+		fi
+	done
+}
 
-	files=$(find "$DOTFILES_DIR" -maxdepth 1 -type d \( -not \( -name '.*' -o -name '!*' -o -name "os_*" -o -wholename $DOTFILES_DIR \) -o -iname "os_${os}" \) -exec basename {} \;)
-else
-	files="$@"
+for folder in "$DOTFILES_DIR"/*/; do
+	[ -d "$folder" ] || continue
+	name=$(basename "$folder")
+	case $name in
+	.* | '!'* | os_*) continue ;;
+	esac
+	stow -d "$DOTFILES_DIR" -R "$name"
+done
+
+os=$(detect_os)
+if [ -n "$os" ] && [ -d "$DOTFILES_DIR/os_$os" ]; then
+	stow_os_folder "$DOTFILES_DIR/os_$os"
 fi
 
-for file in $files; do
-	stow -d "$DOTFILES_DIR" "$file"
-done
 exec $SHELL

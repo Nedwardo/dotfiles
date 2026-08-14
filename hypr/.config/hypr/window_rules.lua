@@ -35,9 +35,9 @@ hl.window_rule({
 hl.window_rule({
 	name = "discord",
 	match = {
-		initial_class = ".iscord",
+		initial_title = ".iscord",
 	},
-	workspace = "2 silent",
+	workspace = "4 silent",
 })
 hl.window_rule({
 	name = "runescape",

@@ -2,8 +2,7 @@
 local main_mod = "SUPER"
 
 -- Rofi
-hl.bind(main_mod .. " + SPACE", hl.dsp.exec_cmd("rofi -show drun"))
-hl.bind(main_mod .. " + ALT + SPACE", hl.dsp.exec_cmd("rofi -show window"))
+hl.bind(main_mod .. " + SPACE", hl.dsp.exec_cmd("walker"))
 
 -- Screenshots
 hl.bind(

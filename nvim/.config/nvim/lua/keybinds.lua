@@ -256,7 +256,7 @@ map({ "n", "x", "o", "v" }, "<S-l>", "<cmd>Treewalker Right<cr>", { silent = tru
 local dap = require("dap")
 group({ "<leader>d", group = "Debugging" })
 map("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
-map("n", "<leader>dt", dap.run_to_cursor, { desc = "Run to cursor" })
+map("n", "<leader>dc", dap.run_to_cursor, { desc = "Run to cursor" })
 
 -- Eval under cursor (and pull up dapui)
 map("n", "<leader>d?", function()

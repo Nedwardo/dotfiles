@@ -61,7 +61,10 @@ hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 5%+"))
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 5%-"))
 
 local transparent_opacity = 0.3
-local query_delay = 10
+-- Milliseconds. The redirect below creates tmpFile immediately, but hyprctl only
+-- fills it after its IPC round trip, measured here at ~20ms, so a short delay
+-- reads the file while it is still empty and the toggle only ever sees "opaque".
+local query_delay = 100
 
 hl.bind("SUPER + O", function()
 	local w = hl.get_active_window()
@@ -89,7 +92,11 @@ hl.bind("SUPER + O", function()
 			return
 		end
 
-		local current = tonumber(out:match("[%d%.]+")) or 1
+		local current = tonumber(out:match("[%d%.]+"))
+		if current == nil then
+			return
+		end
+
 		local target = (current >= 0.999) and transparent_opacity or 1
 
 		hl.dispatch(hl.dsp.window.set_prop({ prop = "opacity", value = target, window = sel }))

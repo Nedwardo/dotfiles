@@ -128,6 +128,8 @@ in
     };
   };
 
+  environment.pathsToLink = [ "/share/hypr" ];
+
   environment.systemPackages = with pkgs; [
     vim
     neovim

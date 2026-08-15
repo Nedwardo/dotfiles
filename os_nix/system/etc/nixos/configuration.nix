@@ -147,7 +147,7 @@ in
     gnumake
     bat
     waybar
-    rofi
+    quickshell
     uwsm
     vesktop
     tldr
@@ -314,6 +314,17 @@ in
       ];
       wantedBy = [ "graphical-session.target" ];
       serviceConfig.ExecStart = "${pkgs.waybar}/bin/waybar";
+    };
+    quickshell = {
+      description = "Quickshell (window overview)";
+      after = [
+        "graphical-session.target"
+      ];
+      wantedBy = [ "graphical-session.target" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.quickshell}/bin/qs -c overview";
+        Restart = "on-failure";
+      };
     };
     tldr = {
       description = "tldr update cache";

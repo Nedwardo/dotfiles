@@ -20,6 +20,8 @@ hl.bind(main_mod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(main_mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(main_mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
+hl.bind(main_mod .. " + Tab", hl.dsp.global("quickshell:overviewToggle"))
+
 hl.bind(main_mod .. " + CTRL + left", hl.dsp.window.move({ direction = "left" }))
 hl.bind(main_mod .. " + CTRL + h", hl.dsp.window.move({ direction = "left" }))
 hl.bind(main_mod .. " + CTRL + right", hl.dsp.window.move({ direction = "right" }))

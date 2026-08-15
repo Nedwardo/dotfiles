@@ -1,0 +1,11 @@
+# Activating an app that already has an open window focuses that window instead
+# of spawning a second instance. Requires elephant's `windows` provider to have
+# connected to the compositor (needs WAYLAND_DISPLAY, see the elephant unit in
+# os_nix/system/etc/nixos/configuration.nix).
+window_integration = true
+
+# Apps that never open a second window, so activation must always focus.
+single_instance_apps = [
+  "discord",
+  "vesktop",
+]

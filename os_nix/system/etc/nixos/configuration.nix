@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { pkgs, ... }:
 let
   omp =
@@ -10,8 +6,7 @@ let
 in
 {
   imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    /etc/nixos/hardware-configuration.nix
   ];
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [
@@ -211,12 +206,12 @@ in
     jq
     playerctl
     swaynotificationcenter
-    elephant
     walker
     mpv
     bluetui
     eza
     vscode-extensions.vadimcn.vscode-lldb
+    elephant
     omp
   ];
 
@@ -327,21 +322,31 @@ in
         ExecStart = "tldr -u";
       };
     };
-
-  };
-  systemd.user.services.iwgtk.enable = false;
-  systemd.user.services."app-iwgtk\\x2dindicator@autostart".enable = false;
-  systemd.user.services.waybar.serviceConfig.Environment =
-    "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/%u/bin";
-  systemd.user.services.elephant = {
-    description = "Elephant data provider backend for Walker";
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    serviceConfig = {
-      Environment = "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/%u/bin";
-      ExecStart = "${pkgs.elephant}/bin/elephant";
-      Restart = "on-failure";
+    walker = {
+      description = "walker autostart";
+      after = [ "graphical-session.target" ];
+      wantedBy = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.walker}/bin/walker --gapplication-service";
+        Restart = "on-failure";
+      };
     };
+    elephant = {
+      description = "Elephant data provider backend for Walker";
+      wantedBy = [ "graphical-session.target" ];
+      partOf = [ "graphical-session.target" ];
+      serviceConfig = {
+        Environment = "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/%u/bin";
+        ExecStart = "${pkgs.elephant}/bin/elephant";
+        Restart = "on-failure";
+      };
+    };
+
+    iwgtk.enable = false;
+    waybar.serviceConfig.Environment = "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/%u/bin";
+    "app-iwgtk\\x2dindicator@autostart".enable = false;
+
   };
 
   programs.neovim = {
@@ -349,11 +354,9 @@ in
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-
     configure = {
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [
-
           actions-preview-nvim
           auto-session
           cmp-buffer

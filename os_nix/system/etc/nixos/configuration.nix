@@ -1,13 +1,31 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   omp =
     (builtins.getFlake "github:can1357/oh-my-pi/de99219db09091dea34f70c316733dd8edc2f618")
     .packages.${pkgs.stdenv.hostPlatform.system}.omp;
+
+  pia-desktop = builtins.getFlake "github:gplusplus314/pia-desktop.nix/4806549c46550814b72c0cc4ef63608fb6953bea";
+
+  pia-icon = pkgs.runCommand "pia-icon" { } ''
+    install -Dm444 ${
+      pkgs.fetchurl {
+        url = "https://media.githubusercontent.com/media/pia-foss/desktop/3.7.2/brands/pia/icons/app-linux.png";
+        hash = "sha256-LnmLghzeSFGsnVV83qb8MjFVAFgbqiZ7XAYPD3oI+Lk=";
+      }
+    } $out/share/icons/hicolor/256x256/apps/piavpn.png
+  '';
 in
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
+    pia-desktop.nixosModules.pia-desktop
   ];
+
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [
     "flakes"
@@ -215,6 +233,7 @@ in
     vscode-extensions.vadimcn.vscode-lldb
     elephant
     omp
+    pia-icon
   ];
 
   services.avahi = {
@@ -233,6 +252,19 @@ in
 
   services.openssh.enable = true;
 
+  services.pia-desktop = {
+    enable = true;
+    users = [ "nedwardo" ];
+  };
+
+  systemd.services.piavpn.serviceConfig = {
+    TemporaryFileSystem = lib.mkForce "/bin /usr/bin";
+    BindReadOnlyPaths = [
+      "${config.systemd.package}/bin/busctl:/usr/bin/busctl"
+      "${pkgs.coreutils}/bin/env:/usr/bin/env"
+    ];
+  };
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -249,10 +281,7 @@ in
   users.users.nedwardo = {
     isNormalUser = true;
     description = "nedwardo";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+    extraGroups = [ "wheel" ];
     useDefaultShell = true;
   };
 
@@ -349,6 +378,7 @@ in
       description = "Elephant data provider backend for Walker";
       wantedBy = [ "graphical-session.target" ];
       partOf = [ "graphical-session.target" ];
+      restartTriggers = [ config.system.path ];
       serviceConfig = {
         Environment = "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/%u/bin";
         ExecStart = "${pkgs.elephant}/bin/elephant";
@@ -359,7 +389,6 @@ in
     iwgtk.enable = false;
     waybar.serviceConfig.Environment = "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/%u/bin";
     "app-iwgtk\\x2dindicator@autostart".enable = false;
-
   };
 
   programs.neovim = {
@@ -418,5 +447,5 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "25.11";
 }

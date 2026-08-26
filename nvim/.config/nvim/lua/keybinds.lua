@@ -149,13 +149,18 @@ map("n", "]d", function()
 	vim.diagnostic.jump({ count = 1 })
 end, { desc = "Next diagnostic" })
 on_hover(function()
-	vim.diagnostic.open_float(nil, {
+	if not next(vim.lsp.get_clients({ bufnr = 0, method = "textDocument/hover" })) then
+		return
+	end
+
+	vim.lsp.buf.hover({
+		focus = false, -- do not jump into the window on repeat CursorHold
 		focusable = false,
+		silent = true, -- no "No information available" spam
 		close_events = { "BufLeave", "CursorMoved", "InsertEnter" },
 		border = "rounded",
-		source = "always",
-		prefix = " ",
-		scope = "cursor",
+		max_width = 100,
+		max_height = 20,
 	})
 end)
 
@@ -257,6 +262,22 @@ local dap = require("dap")
 group({ "<leader>d", group = "Debugging" })
 map("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
 map("n", "<leader>dc", dap.run_to_cursor, { desc = "Run to cursor" })
+map("n", "<leader>dr", "<cmd>DapNew<cr>", { desc = "Start debugging" })
+
+map({ "n", "v" }, "<Leader>dh", function()
+	require("dap.ui.widgets").hover()
+end)
+map({ "n", "v" }, "<Leader>dp", function()
+	require("dap.ui.widgets").preview()
+end)
+map("n", "<Leader>df", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.frames)
+end)
+map("n", "<Leader>ds", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.scopes)
+end)
 
 -- Eval under cursor (and pull up dapui)
 map("n", "<leader>d?", function()

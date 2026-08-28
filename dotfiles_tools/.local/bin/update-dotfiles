@@ -4,6 +4,8 @@
 	exit 1
 }
 
+set -u
+
 detect_os() {
 	[ -f /etc/os-release ] || return
 	. /etc/os-release
@@ -14,14 +16,19 @@ detect_os() {
 }
 
 stow_folder() {
+	shopt -s nullglob dotglob
 	for path in "$1"/*/; do
 		[ -d "$path" ] || continue
 		name=$(basename "$path")
 		if [ "$name" = "system" ]; then
 			printf 'Stowing %s into / (needs sudo)\n' "$path"
-			sudo stow -t / -d "$1" -R system
+			echo "Running command: sudo stow -t / -d \"$1\" -R system"
+			sudo stow -t / -d "$1" -R system -v
 		else
-			stow -t "$HOME" -d "$1" -R "$name"
+			[ -d "$HOME/$name" ] || {
+				mkdir "$HOME/$name"
+			}
+			stow -t "$HOME/$name" -d "$1" -R "$name"
 		fi
 	done
 }

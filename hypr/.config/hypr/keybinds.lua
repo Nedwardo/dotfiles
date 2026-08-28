@@ -2,13 +2,10 @@
 local main_mod = "SUPER"
 
 -- Rofi
-hl.bind(main_mod .. " + SPACE", hl.dsp.exec_cmd("walker"))
+hl.bind(main_mod .. " + SPACE", hl.dsp.exec_cmd("dms ipc call spotlight toggle"))
 
 -- Screenshots
-hl.bind(
-	main_mod .. " + Print",
-	hl.dsp.exec_cmd("wayfreeze --after-freeze-cmd 'grim -g \"$(slurp)\" - | wl-copy; killall wayfreeze'")
-)
+hl.bind(main_mod .. " + Print", hl.dsp.exec_cmd("dms screenshot --no-file"))
 
 -- Kill and create
 hl.bind(main_mod .. " + Q", hl.dsp.exec_cmd("exec $TERMINAL"))
@@ -20,7 +17,7 @@ hl.bind(main_mod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(main_mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(main_mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-hl.bind(main_mod .. " + Tab", hl.dsp.global("quickshell:overviewToggle"))
+hl.bind(main_mod .. " + Tab", hl.dsp.exec_cmd("dms ipc call hypr toggleOverview"))
 
 hl.bind(main_mod .. " + CTRL + left", hl.dsp.window.move({ direction = "left" }))
 hl.bind(main_mod .. " + CTRL + h", hl.dsp.window.move({ direction = "left" }))
@@ -50,17 +47,17 @@ for i = 1, 10 do
 end
 
 -- Audio
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd('pactl set-sink-volume "@DEFAULT_SINK@" +5%'))
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd('pactl set-sink-volume "@DEFAULT_SINK@" -5%'))
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd('pactl set-sink-mute "@DEFAULT_SINK@" toggle'))
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("dms ipc call audio increment 5"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("dms ipc call audio decrement 5"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("dms ipc call audio mute"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("dms ipc call mpris next"))
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("dms ipc call mpris playPause"))
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("dms ipc call mpris playPause"))
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("dms ipc call mpris previous"))
 
 -- Misc fn buttons
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 5%+"))
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 5%-"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("dms ipc call brightness increment 5"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("dms ipc call brightness decrement 5"))
 
 local transparent_opacity = 0.3
 -- Milliseconds. The redirect below creates tmpFile immediately, but hyprctl only

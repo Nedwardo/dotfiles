@@ -12,11 +12,6 @@ local inactive_border = "rgba(595959aa)"
 require("window_rules")
 
 -- ##################
--- ### Workspaces ###
--- ##################
-require("workspaces")
-
--- ##################
 -- ### Appearance ###
 -- ##################
 hl.config({
@@ -69,3 +64,7 @@ hl.config({
 
 require("hardware")
 require("keybinds")
+
+-- DMS Include Configs
+require("dms.layout")
+require("dms.cursor")

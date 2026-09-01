@@ -57,5 +57,3 @@ for folder in "$DOTFILES_DIR"/*/; do
 
 	stow_folder "$folder"
 done
-
-exec "$SHELL"

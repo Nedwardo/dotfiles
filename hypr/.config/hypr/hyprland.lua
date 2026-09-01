@@ -68,3 +68,7 @@ require("keybinds")
 -- DMS Include Configs
 require("dms.layout")
 require("dms.cursor")
+require("dms.outputs")
+require("dms.binds")
+require("dms.binds-user")
+require("dms.windowrules")

@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-pupdate; yay -Syu --answerdiff None --answerclean All; flatpak update 
+pupdate; paru -Syu --answerdiff None --answerclean All; flatpak update 

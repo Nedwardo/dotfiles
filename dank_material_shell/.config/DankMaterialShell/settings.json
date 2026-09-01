@@ -29,7 +29,7 @@
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
   "mangoTrackpadNaturalScrolling": true,
-  "firstDayOfWeek": -1,
+  "firstDayOfWeek": 1,
   "showWeekNumber": false,
   "calendarBackend": "auto",
   "clockFormat": "auto",
@@ -38,16 +38,16 @@
   "useFahrenheit": false,
   "windSpeedUnit": "kmh",
   "nightModeEnabled": false,
-  "animationSpeed": 1,
+  "animationSpeed": 0,
   "customAnimationDuration": 500,
-  "syncComponentAnimationSpeeds": true,
-  "popoutAnimationSpeed": 1,
+  "syncComponentAnimationSpeeds": false,
+  "popoutAnimationSpeed": 0,
   "popoutCustomAnimationDuration": 150,
-  "modalAnimationSpeed": 1,
+  "modalAnimationSpeed": 0,
   "modalCustomAnimationDuration": 150,
-  "enableRippleEffects": true,
-  "animationVariant": 0,
-  "motionEffect": 0,
+  "enableRippleEffects": false,
+  "animationVariant": 1,
+  "motionEffect": 1,
   "m3ElevationEnabled": false,
   "m3ElevationIntensity": 12,
   "m3ElevationOpacity": 30,
@@ -58,9 +58,9 @@
   "popoutElevationEnabled": true,
   "barElevationEnabled": true,
   "blurEnabled": false,
-  "blurForegroundLayers": true,
+  "blurForegroundLayers": false,
   "blurLayerOutlineOpacity": 0.12,
-  "blurBorderEnabled": true,
+  "blurBorderEnabled": false,
   "blurBorderColor": "outline",
   "blurBorderCustomColor": "#ffffff",
   "blurBorderOpacity": 0.35,
@@ -230,7 +230,7 @@
   "runningAppsCurrentMonitor": false,
   "appIdSubstitutions": [],
   "centeringMode": "index",
-  "clockDateFormat": "",
+  "clockDateFormat": "ddd d MMM yyyy",
   "lockDateFormat": "",
   "greeterRememberLastSession": true,
   "greeterRememberLastUser": true,
@@ -348,7 +348,7 @@
   "useSystemSoundTheme": false,
   "soundLogin": false,
   "soundNewNotification": true,
-  "soundVolumeChanged": true,
+  "soundVolumeChanged": false,
   "soundPluggedIn": true,
   "muteSoundsWhenMediaPlaying": true,
   "acMonitorTimeout": 0,
@@ -502,7 +502,7 @@
   "notificationHistorySaveNormal": true,
   "notificationHistorySaveCritical": true,
   "notificationRules": [],
-  "notificationFocusedMonitor": false,
+  "notificationFocusedMonitor": true,
   "osdAlwaysShowValue": false,
   "osdPosition": 5,
   "osdVolumeEnabled": true,
@@ -533,7 +533,7 @@
   "customPowerActionReboot": "",
   "customPowerActionPowerOff": "",
   "updaterHideWidget": false,
-  "updaterCheckOnStart": false,
+  "updaterCheckOnStart": true,
   "updaterUseCustomCommand": false,
   "updaterCustomCommand": "",
   "updaterTerminalAdditionalParams": "",
@@ -545,9 +545,18 @@
   "screenPreferences": {
     "wallpaper": [
       "all"
+    ],
+    "notifications": [],
+    "dock": [],
+    "osd": [
+      "all"
     ]
   },
-  "showOnLastDisplay": {},
+  "showOnLastDisplay": {
+    "notifications": true,
+    "dock": false,
+    "osd": true
+  },
   "niriOutputSettings": {},
   "hyprlandOutputSettings": {},
   "displayProfiles": {},
@@ -573,20 +582,26 @@
       ],
       "centerWidgets": [
         "music",
-        "clock",
-        "weather"
+        "clock"
       ],
       "rightWidgets": [
-        "systemTray",
-        "clipboard",
+        {
+          "id": "systemTray",
+          "enabled": true,
+          "trayMaxVisibleItems": 0
+        },
         "cpuUsage",
         "memUsage",
         "notificationButton",
-        "battery",
-        "controlCenterButton"
+        {
+          "id": "controlCenterButton",
+          "enabled": true,
+          "showBrightnessIcon": false,
+          "showBrightnessPercent": false
+        }
       ],
       "spacing": 0,
-      "innerPadding": 4,
+      "innerPadding": 0,
       "barInsetPadding": 4,
       "bottomGap": 0,
       "transparency": 1,
@@ -620,7 +635,7 @@
       "popupGapsManual": 4,
       "maximizeDetection": true,
       "useOverlayLayer": false,
-      "scrollEnabled": true,
+      "scrollEnabled": false,
       "scrollXBehavior": "column",
       "scrollYBehavior": "workspace",
       "shadowIntensity": 0,
@@ -628,8 +643,8 @@
       "shadowColorMode": "default",
       "shadowCustomColor": "#000000",
       "clickThrough": false,
-      "hoverPopouts": false,
-      "hoverPopoutDelay": 150
+      "hoverPopouts": true,
+      "hoverPopoutDelay": 100
     }
   ],
   "desktopClockEnabled": false,
@@ -708,11 +723,7 @@
   "clipboardEnterToPaste": false,
   "clipboardRememberTypeFilter": false,
   "clipboardTypeFilter": "all",
-  "clipboardVisibleEntryActions": [
-    "pin",
-    "edit",
-    "delete"
-  ],
+  "clipboardVisibleEntryActions": [],
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
   "frameEnabled": false,

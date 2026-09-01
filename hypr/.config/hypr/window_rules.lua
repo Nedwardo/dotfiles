@@ -7,11 +7,6 @@ hl.window_rule({
 	fullscreen = false,
 })
 hl.window_rule({
-	name = "waybar spawned",
-	match = { initial_class = "com.waybar.spawned.ghostty" },
-	float = true,
-})
-hl.window_rule({
 	name = "steam prevent float",
 	match = {
 		initial_class = "^steam$",

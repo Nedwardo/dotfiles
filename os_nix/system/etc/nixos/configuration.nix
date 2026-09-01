@@ -166,7 +166,6 @@ in
     gcc
     gnumake
     bat
-    waybar
     quickshell
     uwsm
     vesktop
@@ -277,6 +276,8 @@ in
     '';
   };
 
+  programs.dms-shell.enable = true;
+
   users.defaultUserShell = pkgs.zsh;
   users.users.nedwardo = {
     isNormalUser = true;
@@ -338,14 +339,6 @@ in
       wantedBy = [ "graphical-session.target" ];
       serviceConfig.ExecStart = "${pkgs.vesktop}/bin/vesktop";
     };
-    waybar = {
-      description = "Waybar";
-      after = [
-        "graphical-session.target"
-      ];
-      wantedBy = [ "graphical-session.target" ];
-      serviceConfig.ExecStart = "${pkgs.waybar}/bin/waybar";
-    };
     quickshell = {
       description = "Quickshell (window overview)";
       after = [
@@ -387,7 +380,6 @@ in
     };
 
     iwgtk.enable = false;
-    waybar.serviceConfig.Environment = "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/%u/bin";
     "app-iwgtk\\x2dindicator@autostart".enable = false;
   };
 

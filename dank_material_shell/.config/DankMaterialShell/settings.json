@@ -172,6 +172,7 @@
   "lockDateFormat": "",
   "greeterRememberLastSession": true,
   "greeterRememberLastUser": true,
+  "greeterAutoLogin": true,
   "greeterEnableFprint": false,
   "greeterEnableU2f": false,
   "greeterWallpaperPath": "",
@@ -386,14 +387,10 @@
   "updaterTerminalAdditionalParams": "",
   "displayNameMode": "system",
   "screenPreferences": {
-    "wallpaper": [
-      "all"
-    ],
+    "wallpaper": ["all"],
     "notifications": [],
     "dock": [],
-    "osd": [
-      "all"
-    ]
+    "osd": ["all"]
   },
   "showOnLastDisplay": {
     "notifications": true,
@@ -413,19 +410,10 @@
       "name": "Main Bar",
       "enabled": true,
       "position": 0,
-      "screenPreferences": [
-        "all"
-      ],
+      "screenPreferences": ["all"],
       "showOnLastDisplay": true,
-      "leftWidgets": [
-        "launcherButton",
-        "workspaceSwitcher",
-        "focusedWindow"
-      ],
-      "centerWidgets": [
-        "music",
-        "clock"
-      ],
+      "leftWidgets": ["launcherButton", "workspaceSwitcher", "focusedWindow"],
+      "centerWidgets": ["music", "clock"],
       "rightWidgets": [
         {
           "id": "systemTray",
@@ -513,9 +501,7 @@
   "desktopClockY": -1,
   "desktopClockWidth": 280,
   "desktopClockHeight": 180,
-  "desktopClockDisplayPreferences": [
-    "all"
-  ],
+  "desktopClockDisplayPreferences": ["all"],
   "systemMonitorEnabled": false,
   "systemMonitorShowHeader": true,
   "systemMonitorTransparency": 0.8,
@@ -552,9 +538,7 @@
   "systemMonitorY": -1,
   "systemMonitorWidth": 320,
   "systemMonitorHeight": 480,
-  "systemMonitorDisplayPreferences": [
-    "all"
-  ],
+  "systemMonitorDisplayPreferences": ["all"],
   "systemMonitorVariants": [],
   "desktopWidgetPositions": {},
   "desktopWidgetGridSettings": {},

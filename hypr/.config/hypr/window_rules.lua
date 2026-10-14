@@ -32,7 +32,7 @@ hl.window_rule({
 	match = {
 		initial_title = ".iscord",
 	},
-	workspace = "4 silent",
+	workspace = "2 silent",
 })
 hl.window_rule({
 	name = "runescape",

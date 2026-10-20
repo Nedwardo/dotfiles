@@ -46,6 +46,7 @@ end, { noremap = true, silent = true })
 map("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Execute the current file" })
 map("n", "<leader>?", "<cmd>:Telescope keymaps<CR>", { desc = "Show keymaps" })
 map("n", "<leader>q", "<cmd>:wqa<CR>", { desc = "Quits vim" })
+map("n", "<leader><leader>c", "<cmd>:ConformInfo<CR>", { desc = "conform status" })
 
 -- ###############
 -- ### Windows ###

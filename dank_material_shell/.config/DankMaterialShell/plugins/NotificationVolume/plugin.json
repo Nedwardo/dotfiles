@@ -1,0 +1,17 @@
+{
+    "id": "notificationVolume",
+    "name": "Notification Volume",
+    "description": "Adjust the playback volume of DMS notification and system sounds from a slider in the Control Center, bar, or settings.",
+    "version": "1.0.0",
+    "author": "nedwardo",
+    "type": "composite",
+    "capabilities": ["daemon", "dankbar-widget", "control-center"],
+    "icon": "notifications_active",
+    "components": {
+        "daemon": "./NotificationVolumeDaemon.qml",
+        "widget": "./NotificationVolumeWidget.qml"
+    },
+    "settings": "./NotificationVolumeSettings.qml",
+    "requires_dms": ">=1.5.0",
+    "permissions": ["settings_read", "settings_write"]
+}

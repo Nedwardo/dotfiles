@@ -4,5 +4,10 @@
   },
   "wallpaper_rotator": {
     "enabled": true
+  },
+  "notificationVolume": {
+    "enabled": true,
+    "volume": 6,
+    "muted": false
   }
 }

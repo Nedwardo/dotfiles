@@ -19,7 +19,35 @@
   "appIdSubstitutions": [],
   "clockDateFormat": "ddd d MMM yyyy",
   "greeterAutoLogin": true,
+  "lockDateFormat": "",
+  "greeterRememberLastSession": true,
+  "greeterRememberLastUser": true,
+  "greeterEnableFprint": false,
+  "greeterEnableU2f": false,
+  "greeterWallpaperPath": "",
+  "mediaSize": 1,
+  "appLauncherViewMode": "list",
+  "spotlightModalViewMode": "list",
+  "browserPickerViewMode": "grid",
+  "browserUsageHistory": {},
+  "appPickerViewMode": "grid",
+  "filePickerUsageHistory": {},
+  "sortAppsAlphabetically": false,
+  "appLauncherGridColumns": 4,
+  "spotlightCloseNiriOverview": true,
+  "spotlightSectionViewModes": {},
+  "appDrawerSectionViewModes": {},
+  "niriOverviewOverlayEnabled": true,
+  "dankLauncherV2Size": "compact",
+  "dankLauncherV2BorderEnabled": false,
+  "dankLauncherV2BorderThickness": 2,
+  "dankLauncherV2BorderColor": "primary",
+  "dankLauncherV2ShowFooter": true,
+  "dankLauncherV2UnloadOnClose": false,
+  "useAutoLocation": false,
   "weatherEnabled": false,
+  "networkPreference": "wifi",
+  "iconTheme": "System Default",
   "cursorSettings": {
     "theme": "System Default",
     "size": 21,
@@ -46,14 +74,10 @@
   "osdPowerProfileEnabled": true,
   "displayNameMode": "model",
   "screenPreferences": {
-    "wallpaper": [
-      "all"
-    ],
+    "wallpaper": ["all"],
     "notifications": [],
     "dock": [],
-    "osd": [
-      "all"
-    ]
+    "osd": ["all"]
   },
   "showOnLastDisplay": {
     "notifications": true,
@@ -67,19 +91,10 @@
       "name": "Main Bar",
       "enabled": true,
       "position": 0,
-      "screenPreferences": [
-        "all"
-      ],
+      "screenPreferences": ["all"],
       "showOnLastDisplay": true,
-      "leftWidgets": [
-        "launcherButton",
-        "workspaceSwitcher",
-        "focusedWindow"
-      ],
-      "centerWidgets": [
-        "music",
-        "clock"
-      ],
+      "leftWidgets": ["launcherButton", "workspaceSwitcher", "focusedWindow"],
+      "centerWidgets": ["music", "clock"],
       "rightWidgets": [
         {
           "id": "systemTray",
@@ -94,6 +109,10 @@
           "enabled": true,
           "showBrightnessIcon": false,
           "showBrightnessPercent": false
+        },
+        {
+          "id": "battery",
+          "enabled": true
         }
       ],
       "spacing": 0,
@@ -157,6 +176,18 @@
     "valid": true,
     "rgba": -1
   },
+  "desktopClockShowDate": true,
+  "desktopClockShowAnalogNumbers": false,
+  "desktopClockShowAnalogSeconds": true,
+  "desktopClockX": -1,
+  "desktopClockY": -1,
+  "desktopClockWidth": 280,
+  "desktopClockHeight": 180,
+  "desktopClockDisplayPreferences": ["all"],
+  "systemMonitorEnabled": false,
+  "systemMonitorShowHeader": true,
+  "systemMonitorTransparency": 0.8,
+  "systemMonitorColorMode": "primary",
   "systemMonitorCustomColor": {
     "r": 1,
     "g": 1,
@@ -171,5 +202,35 @@
     "valid": true,
     "rgba": -1
   },
-  "configVersion": 18
+  "systemMonitorShowCpu": true,
+  "systemMonitorShowCpuGraph": true,
+  "systemMonitorShowCpuTemp": true,
+  "systemMonitorShowGpuTemp": false,
+  "systemMonitorGpuPciId": "",
+  "systemMonitorShowMemory": true,
+  "systemMonitorShowMemoryGraph": true,
+  "systemMonitorShowNetwork": true,
+  "systemMonitorShowNetworkGraph": true,
+  "systemMonitorShowDisk": true,
+  "systemMonitorShowTopProcesses": false,
+  "systemMonitorTopProcessCount": 3,
+  "systemMonitorTopProcessSortBy": "cpu",
+  "systemMonitorGraphInterval": 60,
+  "systemMonitorLayoutMode": "auto",
+  "systemMonitorX": -1,
+  "systemMonitorY": -1,
+  "systemMonitorWidth": 320,
+  "systemMonitorHeight": 480,
+  "systemMonitorDisplayPreferences": ["all"],
+  "systemMonitorVariants": [],
+  "desktopWidgetPositions": {},
+  "desktopWidgetGridSettings": {},
+  "desktopWidgetInstances": [],
+  "desktopWidgetGroups": [],
+  "builtInPluginSettings": {},
+  "clipboardEnterToPaste": false,
+  "launcherPluginVisibility": {},
+  "launcherPluginOrder": [],
+  "configVersion": 5
 }
+

@@ -233,6 +233,9 @@ in
     elephant
     omp
     pia-icon
+    bolt-launcher
+    t3code
+    claude-code
   ];
 
   services.avahi = {

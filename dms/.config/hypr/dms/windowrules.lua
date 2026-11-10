@@ -10,5 +10,8 @@ hl.window_rule({ match = { class = "^firefox$", title = "^Library$" }, float = t
 -- DMS-RULE: id=wr_1794312125406326507, name=com.system76.CosmicFiles
 hl.window_rule({ match = { class = "^com.system76.CosmicFiles$" }, float = true })
 
+-- DMS-RULE: id=wr_1794315378165089313, name=net-runelite-client-RuneLite
+hl.window_rule({ match = { class = "^.+RuneLite$" }, float = true })
+
 -- DMS-RULE: id=dms-window-opaque, name=DMS Window Opaque
 hl.window_rule({ match = { class = "^(dev\\.duxlabs\\.shell|com\\.danklinux\\.dms)$" }, opaque = true })

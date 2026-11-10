@@ -10,6 +10,7 @@ hl.bind(main_mod .. " + Print", hl.dsp.exec_cmd("dms screenshot --no-file"))
 -- Kill and create
 hl.bind(main_mod .. " + Q", hl.dsp.exec_cmd("exec $TERMINAL"))
 hl.bind(main_mod .. " + W", hl.dsp.window.close())
+hl.bind(main_mod .. " + SHIFT + W", hl.dsp.window.kill())
 
 -- Window Control
 hl.bind(main_mod .. " + V", hl.dsp.window.float())

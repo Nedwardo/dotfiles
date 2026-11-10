@@ -38,4 +38,6 @@ application/pdf=firefox.desktop
 application/json=firefox.desktop
 application/xml=firefox.desktop
 inode/directory=yazi.desktop
+x-scheme-handler/rshub=jagex-launcher.desktop
 x-scheme-handler/discord-409416265891971072=discord-409416265891971072.desktop
+x-scheme-handler/t3code=com.t3tools.T3Code.desktop

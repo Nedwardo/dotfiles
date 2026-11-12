@@ -149,93 +149,92 @@ in
   environment.pathsToLink = [ "/share/hypr" ];
 
   environment.systemPackages = with pkgs; [
-    vim
-    neovim
-    bat-extras.batman
-    wget
-    firefox
-    ghostty
-    kitty
-    basedpyright
-    stow
-    git
-    zinit
-    oh-my-posh
-    fzf
-    readline70
-    gcc
-    gnumake
-    bat
-    quickshell
-    uwsm
-    vesktop
-    tldr
-    nixd
-    rustup
-    lua
-    zoxide
-    qbittorrent
-    xdg-desktop-portal-gtk
     adw-gtk3
     adwaita-icon-theme
     adwaita-qt
     adwaita-qt6
+    basedpyright
+    bash-language-server
+    bat
+    bat-extras.batman
+    bluetui
+    bolt-launcher
+    brightnessctl
+    btop
+    cargo
+    claude-code
+    dhcpcd
+    elephant
+    eza
+    fd
+    firefox
+    fzf
+    gcc
+    ghostty
+    git
     gnome-themes-extra
+    gnumake
+    go
+    grim
+    iwd
+    iwgtk
+    jq
+    karere
+    killall
+    kitty
+    libsForQt5.qt5ct
+    lldb
+    lua
+    lua-language-server
+    lua5_1
+    luarocks
+    mercurial
+    mpv
+    neovim
+    nixd
+    nixfmt
+    oh-my-posh
+    omp
+    pavucontrol
+    pia-icon
+    playerctl
+    prettier
+    pulseaudio
+    python315
+    qbittorrent
     qt5.qtwayland
     qt6.qtwayland
     qt6Packages.qt6ct
-    libsForQt5.qt5ct
-    rose-pine-hyprcursor
-    hexchat
-    tree
-    nixfmt
-    ghostty
-    shfmt
-    ruff
-    prettier
-    luarocks
-    tree-sitter
+    quickshell
+    readline70
     ripgrep
-    lua5_1
-    lldb
-    fd
-    lua-language-server
-    typescript-language-server
-    vscode-json-languageserver
-    mercurial
-    stylua
-    bash-language-server
-    pavucontrol
-    yazi
+    rose-pine-hyprcursor
+    ruff
+    rustup
+    shfmt
     slurp
-    grim
-    wayfreeze
-    wl-clipboard
-    killall
-    brightnessctl
-    pulseaudio
-    iwd
-    iwgtk
-    karere
-    dhcpcd
-    python315
-    go
-    cargo
-    btop
-    jq
-    playerctl
+    stow
+    stylua
     swaynotificationcenter
-    walker
-    mpv
-    bluetui
-    eza
-    vscode-extensions.vadimcn.vscode-lldb
-    elephant
-    omp
-    pia-icon
-    bolt-launcher
     t3code
-    claude-code
+    tldr
+    tree
+    tree-sitter
+    typescript-language-server
+    uwsm
+    vesktop
+    vim
+    vscode-extensions.vadimcn.vscode-lldb
+    vscode-json-languageserver
+    walker
+    wayfreeze
+    wget
+    wl-clipboard
+    xdg-desktop-portal-gtk
+    yazi
+    zinit
+    zoxide
+    cosmic-files
   ];
 
   services.avahi = {
@@ -253,6 +252,8 @@ in
   };
 
   services.openssh.enable = true;
+
+  programs.dux-shell.enable = true;
 
   services.pia-desktop = {
     enable = true;
@@ -278,8 +279,6 @@ in
       ZINIT_HOME="${pkgs.zinit}/share/zinit"
     '';
   };
-
-  programs.dms-shell.enable = true;
 
   users.defaultUserShell = pkgs.zsh;
   users.users.nedwardo = {
@@ -311,16 +310,6 @@ in
       wants = [ "user-wait-network-online.service" ];
       wantedBy = [ "graphical-session.target" ];
       serviceConfig.ExecStart = "${pkgs.firefox}/bin/firefox";
-    };
-    hexchat = {
-      description = "Hexchat";
-      after = [
-        "graphical-session.target"
-        "user-wait-network-online.service"
-      ];
-      wants = [ "user-wait-network-online.service" ];
-      wantedBy = [ "graphical-session.target" ];
-      serviceConfig.ExecStart = "${pkgs.hexchat}/bin/hexchat";
     };
     qbittorrent = {
       description = "qBittorrent";

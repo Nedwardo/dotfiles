@@ -7,7 +7,7 @@
   },
   "notificationVolume": {
     "enabled": true,
-    "volume": 6,
+    "volume": 3,
     "muted": false
   }
 }

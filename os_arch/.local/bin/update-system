@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-pupdate; paru -Syu --answerclean All; flatpak update 
+pupdate; paru -S paru; paru -Syu; flatpak update 

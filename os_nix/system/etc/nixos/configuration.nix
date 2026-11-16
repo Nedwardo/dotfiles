@@ -163,7 +163,7 @@ in
     btop
     cargo
     claude-code
-    dhcpcd
+    cosmic-files
     elephant
     eza
     fd
@@ -176,8 +176,6 @@ in
     gnumake
     go
     grim
-    iwd
-    iwgtk
     jq
     karere
     killall
@@ -215,7 +213,6 @@ in
     slurp
     stow
     stylua
-    swaynotificationcenter
     t3code
     tldr
     tree
@@ -234,7 +231,6 @@ in
     yazi
     zinit
     zoxide
-    cosmic-files
   ];
 
   services.avahi = {
@@ -370,9 +366,6 @@ in
         Restart = "on-failure";
       };
     };
-
-    iwgtk.enable = false;
-    "app-iwgtk\\x2dindicator@autostart".enable = false;
   };
 
   programs.neovim = {

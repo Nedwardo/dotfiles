@@ -2,6 +2,8 @@ local map = vim.keymap.set
 local group = require("which-key").add
 local notify = require("notify")
 
+local ignored_float = nil
+
 local function on_hover(callback)
 	vim.api.nvim_create_autocmd("CursorHold", {
 		callback = callback,
@@ -17,6 +19,14 @@ local function with_cmp(fn)
 			fallback()
 		end
 	end
+end
+
+local function float_identifier()
+	return {
+		buf = vim.api.nvim_get_current_buf(),
+		line = vim.api.nvim_win_get_cursor(0)[1],
+		cword = vim.fn.expand("<cword>"),
+	}
 end
 
 -- ###############
@@ -36,6 +46,7 @@ map("n", "<Esc>", function()
 		end
 	end
 	if closed_float then
+		ignored_float = float_identifier()
 		return
 	end
 
@@ -154,6 +165,18 @@ on_hover(function()
 		return
 	end
 
+	if ignored_float then
+		float = float_identifier()
+		if
+			ignored_float.buf == float.buf
+			and ignored_float.line == float.line
+			and ignored_float.cword == float.cword
+		then
+			return
+		end
+		ignored_float = nil
+	end
+
 	vim.lsp.buf.hover({
 		focus = false, -- do not jump into the window on repeat CursorHold
 		focusable = false,
@@ -263,7 +286,7 @@ local dap = require("dap")
 group({ "<leader>d", group = "Debugging" })
 map("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
 map("n", "<leader>dc", dap.run_to_cursor, { desc = "Run to cursor" })
-map("n", "<leader>dr", "<cmd>DapNew<cr>", { desc = "Start debugging" })
+map("n", "<leader>dr", dap.continue, { desc = "Start debugging" })
 
 map({ "n", "v" }, "<Leader>dh", function()
 	require("dap.ui.widgets").hover()

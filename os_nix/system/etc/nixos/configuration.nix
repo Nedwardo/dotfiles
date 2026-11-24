@@ -233,6 +233,8 @@ in
     zoxide
   ];
 
+  services.power-profiles-daemon.enable = true;
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;

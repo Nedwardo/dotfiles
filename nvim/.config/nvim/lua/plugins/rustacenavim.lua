@@ -27,7 +27,11 @@ return {
 				},
 			},
 			-- DAP configuration
-			dap = {},
+			dap = {
+				adapter = require("rustaceanvim.config").get_codelldb_adapter(
+					vim.fn.exepath("codelldb")
+				),
+			},
 		}
 	end,
 }

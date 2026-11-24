@@ -5,6 +5,7 @@ local main_mod = "SUPER"
 hl.bind(main_mod .. " + SPACE", hl.dsp.exec_cmd("dms ipc call spotlight toggle"))
 
 -- Screenshots
+hl.bind("Print", hl.dsp.exec_cmd("dms screenshot --no-file"))
 hl.bind(main_mod .. " + Print", hl.dsp.exec_cmd("dms screenshot --no-file"))
 
 -- Kill and create
